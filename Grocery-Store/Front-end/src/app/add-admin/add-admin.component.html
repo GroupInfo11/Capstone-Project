@@ -1,0 +1,106 @@
+<div class="col d-flex justify-content-center" *ngIf="adminLoginStatus">
+  <div class="card" style="width: 25rem">
+    <div class="card-header">
+      <h2>Add Admin</h2>
+    </div>
+    <div class="card-body align-items-center">
+      <form class="p-3 bg-light" [formGroup]="adminForm" novalidate>
+        <div class="mb-3">
+          <input
+            type="text"
+            name="fullName"
+            formControlName="fullName"
+            [ngClass]="{
+              'is-invalid': f.fullName.touched && f.fullName.invalid
+            }"
+            [(ngModel)]="admin.fullName"
+            placeholder="Full Name"
+          />
+          <div
+            *ngIf="f.fullName.touched && f.fullName.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.fullName.errors.required">
+              Full Name is required and must be a valid name
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <input
+            type="email"
+            name="email"
+            formControlName="email"
+            [ngClass]="{
+              'is-invalid': f.email.touched && f.email.invalid
+            }"
+            [(ngModel)]="admin.email"
+            placeholder="Email"
+          />
+          <div
+            *ngIf="f.email.touched && f.email.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <div *ngIf="f.email.errors.email">
+              Enter a valid email address, e.g.,john@example.com
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <input
+            type="password"
+            name="password"
+            formControlName="password"
+            [ngClass]="{
+              'is-invalid': f.password.touched && f.password.invalid
+            }"
+            [(ngModel)]="admin.password"
+            placeholder="Password"
+          />
+          <div
+            *ngIf="f.password.touched && f.password.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">
+              Password must be atleast 6 characters
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <input
+            type="password"
+            name="confirmPassword"
+            formControlName="confirmPassword"
+            [ngClass]="{
+              'is-invalid':
+                f.confirmPassword.touched && f.confirmPassword.invalid
+            }"
+            [(ngModel)]="admin.confirmPassword"
+            placeholder="Confirm Password"
+          />
+          <div
+            *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.confirmPassword.errors.required">
+              Confirm Password is required
+            </div>
+            <div *ngIf="f.confirmPassword.errors.mustMatch">
+              Password Mismatch
+            </div>
+          </div>
+        </div>
+
+        <input
+          type="submit"
+          value="Add Admin"
+          (click)="onsubmit()"
+          [disabled]="!adminForm.valid"
+          class="btn btn-primary"
+        />
+      </form>
+    </div>
+  </div>
+</div>
