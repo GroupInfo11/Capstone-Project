@@ -14,6 +14,8 @@ import { ManageOrdersComponent } from './manage-orders/manage-orders.component';
 import { ManageProductsComponent } from './manage-products/manage-products.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ProductUpdateComponent } from './product-update/product-update.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 
 export const applicationRoutes: Routes = [
@@ -33,5 +35,7 @@ export const applicationRoutes: Routes = [
   { path: 'add-admin', component: AddAdminComponent },
   {path:"Employee", component:EmployeeComponent},
   {path:"EmployeeSignIn", component:EmployeeSignInComponent},
-  {path:"EmployeePanel/:uname", component:EmployeePanelComponent}
+  {path:"EmployeePanel/:uname", component:EmployeePanelComponent},
+  {path:"UserPanel", component:UserPanelComponent},
+  {path:"UserDashboard/:uname", component:UserDashboardComponent}
 ];

@@ -24,6 +24,8 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
 import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { EmployeePanelComponent } from './employee-panel/employee-panel.componen
     AddAdminComponent,
     EmployeeComponent,
     EmployeeSignInComponent,
-    EmployeePanelComponent
+    EmployeePanelComponent,
+    UserPanelComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule,
