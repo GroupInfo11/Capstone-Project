@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="d-flex flex-row-reverse">
+    <div class="p-2">
+      <div class="col d-flex justify-content-center">
+        <div class="card" style="width: 25rem">
+          <div class="card-header">
+            <h2>Login</h2>
+          </div>
+          <div class="card-body">
+            <form
+              name="form"
+              (ngSubmit)="login()"
+              #userForm="ngForm"
+              novalidate
+            >
+              <div class="mb-3">
+                <label for="admin" class="form-label">Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  #email="ngModel"
+                  [ngClass]="{
+                    'is-invalid': email.touched && email.invalid
+                  }"
+                  [(ngModel)]="admin.email"
+                  name="email"
+                  placeholder="please enter your email here"
+                  required
+                  email
+                />
+                <div
+                  *ngIf="email.touched && email.invalid"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="email.errors.required">Email is required</div>
+                  <div *ngIf="email.errors.email">Email must be valid</div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  [(ngModel)]="admin.password"
+                  name="password"
+                  placeholder="******"
+                />
+              </div>
+              <div class="mb-3">
+                <input type="submit" class="btn btn-secondary" value="Login" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-2">
+      <img
+        src="https://image.shutterstock.com/image-vector/settings-tools-icons-vector-set-600w-290204201.jpg"
+      />
+    </div>
+  </div>
+</div>

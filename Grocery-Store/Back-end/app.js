@@ -1,0 +1,33 @@
+let express = require("express");
+let mongoose = require("mongoose");
+let app = express();
+var productsRouter = require("./routes/product");
+
+var adminRouter = require("./routes/admin");
+
+var cors = require("cors");
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+mongoose
+  .connect("mongodb+srv://group11:1234@grocers.uctlk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  })
+  .then(() => {
+    console.log("Connected to Database");
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+app.use("/products", productsRouter);
+app.use("/admin", adminRouter);
+
+app.listen(5000, () => {
+  console.log("Listening on port 5000");
+});
+
+module.exports = app;
