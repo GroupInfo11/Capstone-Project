@@ -27,6 +27,8 @@ import { EmployeePanelComponent } from './employee-panel/employee-panel.componen
 import { GenerateReportsComponent } from './generate-reports/generate-reports.component';
 import { UserSigninComponent } from './user-signin/user-signin.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -48,9 +50,14 @@ import { UserSignupComponent } from './user-signup/user-signup.component';
     EmployeeComponent,
     EmployeeSignInComponent,
     EmployeePanelComponent,
+<<<<<<< HEAD
     GenerateReportsComponent,
     UserSigninComponent,
     UserSignupComponent
+=======
+    UserPanelComponent,
+    UserDashboardComponent
+>>>>>>> 7daed6b94aab16af880d27d2690ecbcbaaa30e67
   ],
   imports: [
     BrowserModule,
