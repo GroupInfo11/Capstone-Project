@@ -1,0 +1,67 @@
+<div class="container" *ngIf="adminLoginStatus">
+  <form>
+    <div class="mb-3">
+      <label for="name" class="form-label">User Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="fullName"
+        [(ngModel)]="user.fullName"
+        placeholder="Enter Full Name"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">User Email</label>
+      <input
+        type="text"
+        class="form-control"
+        name="email"
+        [(ngModel)]="user.email"
+        placeholder="Enter Email"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="text"
+        class="form-control"
+        name="password"
+        [(ngModel)]="user.password"
+        placeholder="Enter Password"
+        readonly
+      />
+    </div>
+    <div class="mb-3">
+      <label for="Address" class="form-label">User Address</label>
+      <input
+        type="text"
+        class="form-control"
+        name="address"
+        [(ngModel)]="user.address"
+        placeholder="Enter Address"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="card" class="form-label">User Card</label>
+      <input
+        type="text"
+        class="form-control"
+        name="card"
+        [(ngModel)]="user.card"
+        placeholder="Enter Card Details"
+      />
+    </div>
+
+    <div class="mb-3">
+      <input
+        type="button"
+        value="Update User"
+        class="btn btn-secondary"
+        (click)="updateUser()"
+      />
+      |<button type="button" class="btn btn-secondary" (click)="deleteUser()">
+        Delete
+      </button>
+    </div>
+  </form>
+</div>

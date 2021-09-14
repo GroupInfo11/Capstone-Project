@@ -1,0 +1,32 @@
+<div class="container" *ngIf="adminLoginStatus">
+  <table class="table table-hover">
+    <thead></thead>
+    <tbody *ngFor="let order of orders">
+      <tr>
+        <td><b>Order Id</b></td>
+        <td><b>User Id</b></td>
+        <td><b>Email</b></td>
+        <td><b>Actions</b></td>
+      </tr>
+      <tr>
+        <td>{{ order._id }}</td>
+        <td>{{ order.id }}</td>
+        <td>{{ order.email }}</td>
+        <td>
+          <button
+            type="submit"
+            class="btn btn-sm btn-danger"
+            (click)="deleteOrder(order._id)"
+          >
+            Decline
+          </button>
+        </td>
+      </tr>
+      <label><b>Orders:</b></label>
+      <tr *ngFor="let item of order.orders">
+        <td>{{ item.name }}</td>
+        <td>{{ item.qty }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

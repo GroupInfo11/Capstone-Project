@@ -1,0 +1,29 @@
+<div class="container" *ngIf="adminLoginStatus">
+  <a routerLink="/add-admin" class="btn btn-secondary">Add New Admin</a>
+  <br />
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let admin of admins">
+        <td>{{ admin._id }}</td>
+        <td>{{ admin.fullName }}</td>
+        <td>{{ admin.email }}</td>
+        <td>{{ admin.password }}</td>
+        <td>
+          <a [routerLink]="['/admin-update', admin._id.toString()]"
+            >View Details</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,29 @@
+<div class="container" *ngIf="adminLoginStatus">
+  <a routerLink="/add-user" class="btn btn-secondary">Add New User</a>
+  <br />
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user._id }}</td>
+        <td>{{ user.fullName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.password }}</td>
+        <td>
+          <a [routerLink]="['/user-update', user._id.toString()]"
+            >View Details</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

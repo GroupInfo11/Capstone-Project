@@ -1,0 +1,199 @@
+<div class="container" *ngIf="loginStatus">
+  <div class="col d-flex justify-content-center">
+    <div class="card-body">
+      <div class="card">
+        <div class="d-flex justify-content-center">
+          <div>
+            <img
+              src="https://img.icons8.com/bubbles/100/000000/administrator-male.png"
+              class="img-lg rounded-circle mb-4"
+              alt="profile image"
+            />
+          </div>
+          <table class="table table-striped">
+            <tbody *ngIf="!showEdit">
+              <tr>
+                <label>Full Name:</label>
+                {{
+                  admin.fullName
+                }}
+              </tr>
+              <tr>
+                <label>Email:</label>
+                {{
+                  admin.email
+                }}
+              </tr>
+
+              <tr>
+                <button (click)="this.EditEmp()">Edit</button>
+              </tr>
+            </tbody>
+
+            <tbody *ngIf="showEdit">
+              <div class="col d-flex justify-content-center">
+                <div class="card-body align-items-center">
+                  <form
+                    class="p-3 bg-light"
+                    [mustMatch]="['password', 'confirmPassword']"
+                    #adminForm="ngForm"
+                    (ngSubmit)="update()"
+                    novalidate
+                  >
+                    <div class="mb-3">
+                      <input
+                        type="text"
+                        name="fullName"
+                        #name="ngModel"
+                        [ngClass]="{
+                          'is-invalid': name.touched && name.invalid
+                        }"
+                        class="form-control"
+                        [(ngModel)]="admin.fullName"
+                        required
+                      />
+                      <div
+                        *ngIf="name.touched && name.invalid"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="name.errors.required">
+                          Full Name is required and must be a valid name
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <input
+                        type="email"
+                        name="email"
+                        #email="ngModel"
+                        [ngClass]="{
+                          'is-invalid': email.touched && email.invalid
+                        }"
+                        [(ngModel)]="admin.email"
+                        class="form-control"
+                        required
+                        email
+                      />
+
+                      <div
+                        *ngIf="email.touched && email.invalid"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="email.errors.required">
+                          Email is required
+                        </div>
+                        <div *ngIf="email.errors.email">
+                          Enter a valid email address, e.g.,john@example.com
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <input
+                        type="password"
+                        name="password"
+                        #password="ngModel"
+                        [ngClass]="{
+                          'is-invalid': password.touched && password.invalid
+                        }"
+                        [(ngModel)]="admin.password"
+                        class="form-control"
+                        placeholder="Password"
+                        required
+                        minlength="6"
+                        readonly
+                      />
+
+                      <div
+                        *ngIf="password.touched && password.invalid"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="password.errors.required">
+                          Password is required
+                        </div>
+                        <div *ngIf="password.errors.minlength">
+                          Password must be atleast 6 characters.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <input
+                        type="password"
+                        name="confirmPassword"
+                        #confirmPassword="ngModel"
+                        [ngClass]="{
+                          'is-invalid':
+                            confirmPassword.touched && confirmPassword.invalid
+                        }"
+                        [(ngModel)]="admin.confirmPassword"
+                        class="form-control"
+                        placeholder="Confirm Password"
+                        required
+                        readonly
+                      />
+
+                      <div
+                        *ngIf="
+                          confirmPassword.touched && confirmPassword.invalid
+                        "
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="confirmPassword.errors.required">
+                          Confirm Password is required
+                        </div>
+                        <div *ngIf="confirmPassword.errors.mustMatch">
+                          Password Mismatch
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <input
+                        type="text"
+                        name="address"
+                        #address="ngModel"
+                        [(ngModel)]="admin.address"
+                        placeholder="Address"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <input
+                        type="text"
+                        name="card"
+                        #card="ngModel"
+                        [ngClass]="{
+                          'is-invalid': card.touched && card.invalid
+                        }"
+                        [(ngModel)]="admin.card"
+                        class="form-control"
+                        placeholder="card"
+                        required
+                        minlength="16"
+                        maxlength="16"
+                      />
+
+                      <div
+                        *ngIf="card.touched && card.invalid"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="card.errors.required">Card is required</div>
+                        <div *ngIf="card.errors.minlength">
+                          Card must be atleast 16 characters.
+                        </div>
+                      </div>
+                    </div>
+                    <input
+                      type="submit"
+                      value="Update"
+                      [disabled]="!adminForm.form.valid"
+                      class="btn btn-primary"
+                    />
+                  </form>
+                </div>
+              </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
