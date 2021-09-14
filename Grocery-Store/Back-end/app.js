@@ -4,6 +4,7 @@ let app = express();
 var productsRouter = require("./routes/product");
 
 var adminRouter = require("./routes/admin");
+var employeeRouter = require("./routes/employeeRouter");
 
 var cors = require("cors");
 
@@ -12,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 mongoose
-  .connect("mongodb+srv://group11:1234@grocers.uctlk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+  .connect("mongodb+srv://group11:1234@grocers.uctlk.mongodb.net/Grocers?retryWrites=true&w=majority", {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
@@ -25,6 +26,7 @@ mongoose
 
 app.use("/products", productsRouter);
 app.use("/admin", adminRouter);
+app.use("/employee", employeeRouter);
 
 app.listen(5000, () => {
   console.log("Listening on port 5000");

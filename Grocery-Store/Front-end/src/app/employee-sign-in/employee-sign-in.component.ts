@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-employee-sign-in',
@@ -13,17 +14,21 @@ export class EmployeeSignInComponent implements OnInit {
     pass: new FormControl()
   });
   msg?:string;
-  constructor(public router:Router) { }
+  constructor(public employeeSer:EmployeeService, public router:Router) { }
 
   ngOnInit(): void {
   }
   checkUser(){
     let login = this.signInRef.value;
-    if(login.user == "Paul" && login.pass == "1234"){
-      this.router.navigate(["EmployeePanel", login.user])
-    }else{
-      this.msg = "Invalid username or password";
-    }
+    // if(login.user == "Paul" && login.pass == "1234")
+    this.employeeSer.checkLoginDetails(login).subscribe(result=>{
+      if(result=="Success"){
+        this.router.navigate(["EmployeePanel", login.user]);
+      }else{
+        this.msg = result;
+      }
+    },
+    error=>console.log(error));
     this.signInRef.reset();
   }
 }
