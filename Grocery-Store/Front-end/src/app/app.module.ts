@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { applicationRoutes } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { MustMatchDirective } from 'src/app/directives/must-match.directive';
 import { RegistrationService } from './services/registration.service';
@@ -21,6 +22,10 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { AdminUpdateComponent } from './admin-update/admin-update.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+
+import { EmpSendrequestComponent } from './emp-sendrequest/emp-sendrequest.component';
+import {EmpRequestService} from './services/emp-request.service'
+
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
 import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
@@ -47,17 +52,18 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     ManageAdminsComponent,
     AdminUpdateComponent,
     AddAdminComponent,
+
+    EmpSendrequestComponent,
+
     EmployeeComponent,
     EmployeeSignInComponent,
     EmployeePanelComponent,
-<<<<<<< HEAD
+
     GenerateReportsComponent,
     UserSigninComponent,
     UserSignupComponent
-=======
     UserPanelComponent,
     UserDashboardComponent
->>>>>>> 7daed6b94aab16af880d27d2690ecbcbaaa30e67
   ],
   imports: [
     BrowserModule,
@@ -66,7 +72,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     HttpClientModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
   ],
-  providers: [RegistrationService, AdminAuthGuard],
+  providers: [RegistrationService, AdminAuthGuard, EmpRequestService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

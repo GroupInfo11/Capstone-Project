@@ -13,6 +13,7 @@ export class ProductUpdateComponent implements OnInit {
   id: any;
   product: Product = new Product();
   adminLoginStatus: boolean = false;
+  
   headers = new HttpHeaders().set(
     'x-access-token',
     localStorage.getItem('token')
