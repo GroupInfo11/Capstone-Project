@@ -22,9 +22,18 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { AdminUpdateComponent } from './admin-update/admin-update.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+
 import { EmpSendrequestComponent } from './emp-sendrequest/emp-sendrequest.component';
 import {EmpRequestService} from './services/emp-request.service'
 
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
+import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
+import { GenerateReportsComponent } from './generate-reports/generate-reports.component';
+import { UserSigninComponent } from './user-signin/user-signin.component';
+import { UserSignupComponent } from './user-signup/user-signup.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +52,18 @@ import {EmpRequestService} from './services/emp-request.service'
     ManageAdminsComponent,
     AdminUpdateComponent,
     AddAdminComponent,
+
     EmpSendrequestComponent,
+
+    EmployeeComponent,
+    EmployeeSignInComponent,
+    EmployeePanelComponent,
+
+    GenerateReportsComponent,
+    UserSigninComponent,
+    UserSignupComponent
+    UserPanelComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule,

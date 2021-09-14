@@ -7,11 +7,16 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { AdminUpdateComponent } from './admin-update/admin-update.component';
 import { EmpSendrequestComponent } from './emp-sendrequest/emp-sendrequest.component';
+import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
+import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
+import { EmployeeComponent } from './employee/employee.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { ManageOrdersComponent } from './manage-orders/manage-orders.component';
 import { ManageProductsComponent } from './manage-products/manage-products.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ProductUpdateComponent } from './product-update/product-update.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 
 export const applicationRoutes: Routes = [
@@ -29,5 +34,10 @@ export const applicationRoutes: Routes = [
   { path: 'admin-update/:id', component: AdminUpdateComponent },
   { path: 'add-user', component: AddUserComponent },
   { path: 'add-admin', component: AddAdminComponent },
-  { path: 'emp-sendRequest', component: EmpSendrequestComponent}
+  { path: 'emp-sendRequest', component: EmpSendrequestComponent},
+  {path:"Employee", component:EmployeeComponent},
+  {path:"EmployeeSignIn", component:EmployeeSignInComponent},
+  {path:"EmployeePanel/:uname", component:EmployeePanelComponent},
+  {path:"UserPanel", component:UserPanelComponent},
+  {path:"UserDashboard/:uname", component:UserDashboardComponent}
 ];
