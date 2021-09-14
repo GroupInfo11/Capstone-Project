@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Console } from 'console';
 
 //connect to mongo
-let mongoose = require("mongoose");
+/*let mongoose = require("mongoose");
 let url = "mongodb+srv://group11:1234@grocers.uctlk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 mongoose.pluralize(null);
 mongoose.connect(url).
@@ -20,13 +19,14 @@ let userSchema = mongoose.Schema({
   phone:String,
   address:String
 });
-let userModel = mongoose.model("Users",userSchema);
+let userModel = mongoose.model("Users",userSchema);*/
 
 @Component({
   selector: 'app-user-signin',
   templateUrl: './user-signin.component.html',
   styleUrls: ['./user-signin.component.css']
 })
+
 export class UserSigninComponent implements OnInit {
  
   signinRef = new FormGroup({
@@ -41,7 +41,7 @@ export class UserSigninComponent implements OnInit {
 
   signIn() {
     let info = this.signinRef.value;
-    userModel.findOne({_id: info._id},(err,data)=> {//pulls the entry with a matching id from the database
+    /*userModel.findOne({_id: info._id},(err,data)=> {//pulls the entry with a matching id from the database
       if(!err){
           if(data.password == info.password){//data is the entry from the database, info is the information input in the form
             //sign in user
@@ -49,7 +49,7 @@ export class UserSigninComponent implements OnInit {
       }else {
             //send error message that user id was not found   
       }
-    })
+    })*/
 
   }
 }

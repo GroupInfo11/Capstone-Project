@@ -61,7 +61,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 
     GenerateReportsComponent,
     UserSigninComponent,
-    UserSignupComponent
+    UserSignupComponent,
     UserPanelComponent,
     UserDashboardComponent
   ],
