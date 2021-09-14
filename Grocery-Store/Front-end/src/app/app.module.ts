@@ -21,6 +21,9 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { AdminUpdateComponent } from './admin-update/admin-update.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
+import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
     ManageAdminsComponent,
     AdminUpdateComponent,
     AddAdminComponent,
+    EmployeeComponent,
+    EmployeeSignInComponent,
+    EmployeePanelComponent
   ],
   imports: [
     BrowserModule,
