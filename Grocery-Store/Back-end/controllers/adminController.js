@@ -1,4 +1,6 @@
 var Admin = require("../models/adminModel");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 module.exports.getAllUsers = (req, res, next) => {
   Admin.find((err, admins) => {
@@ -151,3 +153,7 @@ module.exports.deleteAdmin = (req, res) => {
     });
   });
 };
+
+module.exports.getAllRequest = (req, res)=> {
+
+}

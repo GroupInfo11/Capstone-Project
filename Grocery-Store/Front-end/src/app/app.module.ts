@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { applicationRoutes } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { MustMatchDirective } from 'src/app/directives/must-match.directive';
 import { RegistrationService } from './services/registration.service';
@@ -21,6 +22,9 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { AdminUpdateComponent } from './admin-update/admin-update.component';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+import { EmpSendrequestComponent } from './emp-sendrequest/emp-sendrequest.component';
+import {EmpRequestService} from './services/emp-request.service'
+
 
 @NgModule({
   declarations: [
@@ -39,6 +43,7 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
     ManageAdminsComponent,
     AdminUpdateComponent,
     AddAdminComponent,
+    EmpSendrequestComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,7 @@ import { AddAdminComponent } from './add-admin/add-admin.component';
     HttpClientModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
   ],
-  providers: [RegistrationService, AdminAuthGuard],
+  providers: [RegistrationService, AdminAuthGuard, EmpRequestService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

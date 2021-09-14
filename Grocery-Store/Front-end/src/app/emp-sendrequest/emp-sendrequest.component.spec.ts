@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteEmpComponent } from './delete-emp.component';
+import { EmpSendrequestComponent } from './emp-sendrequest.component';
 
-describe('DeleteEmpComponent', () => {
-  let component: DeleteEmpComponent;
-  let fixture: ComponentFixture<DeleteEmpComponent>;
+describe('EmpSendrequestComponent', () => {
+  let component: EmpSendrequestComponent;
+  let fixture: ComponentFixture<EmpSendrequestComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeleteEmpComponent ]
+      declarations: [ EmpSendrequestComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeleteEmpComponent);
+    fixture = TestBed.createComponent(EmpSendrequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
