@@ -1,9 +1,10 @@
 let express = require("express");
 let router = express.Router();
 let orderController = require("../controllers/orderController");
+let userController = require("../controllers/userController");
 
 router.get("/getAllOrders", orderController.getOrder);
-// router.post("/signUp", employeeController.signUp);
-
+router.post("/signIn", userController.signIn);
+router.post("/signUp", userController.signUp);
 
 module.exports = router;

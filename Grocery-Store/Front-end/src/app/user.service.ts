@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Order } from './models/order';
+import { User } from '../../../Back-end/models/userModel'
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,5 +14,13 @@ export class UserService {
 
   retrieveAllOrdersInfo():Observable<any[]>{
     return this.http.get<any[]>("http://localhost:5000/user/getAllOrders");
+  }
+
+  checkLoginDetails(login:User):Observable<any>{
+    return this.http.post("http://localhost:5000/user/signIn", login, {responseType:'text'});
+  }
+
+  makeUser(login:User):Observable<any>{
+    return this.http.post("http://localhost:5000/user/signUp", login, {responseType:'text'});
   }
 }
