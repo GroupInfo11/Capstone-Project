@@ -50,14 +50,11 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     EmployeeComponent,
     EmployeeSignInComponent,
     EmployeePanelComponent,
-<<<<<<< HEAD
     GenerateReportsComponent,
     UserSigninComponent,
-    UserSignupComponent
-=======
+    UserSignupComponent,
     UserPanelComponent,
     UserDashboardComponent
->>>>>>> 7daed6b94aab16af880d27d2690ecbcbaaa30e67
   ],
   imports: [
     BrowserModule,
