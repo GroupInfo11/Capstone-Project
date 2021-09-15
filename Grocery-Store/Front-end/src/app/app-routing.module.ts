@@ -7,6 +7,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { AdminUpdateComponent } from './admin-update/admin-update.component';
 import { EmpSendrequestComponent } from './emp-sendrequest/emp-sendrequest.component';
+import { EmpUpdateOrderComponent } from './emp-update-order/emp-update-order.component';
 import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
 import { EmployeeComponent } from './employee/employee.component';
@@ -35,6 +36,7 @@ export const applicationRoutes: Routes = [
   { path: 'add-user', component: AddUserComponent },
   { path: 'add-admin', component: AddAdminComponent },
   { path: 'emp-sendRequest', component: EmpSendrequestComponent},
+  { path: 'emp-updateOrder' ,component: EmpUpdateOrderComponent},
   {path:"Employee", component:EmployeeComponent},
   {path:"EmployeeSignIn", component:EmployeeSignInComponent},
   {path:"EmployeePanel/:uname", component:EmployeePanelComponent},

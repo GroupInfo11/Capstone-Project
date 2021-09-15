@@ -10,4 +10,7 @@ let userSchema = mongoose.Schema({
     phone:String,
     address:String
   });
+
 let userModel = mongoose.model("Users",userSchema);
+
+modules.export = userModel;

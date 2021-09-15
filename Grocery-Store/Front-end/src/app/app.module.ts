@@ -34,6 +34,8 @@ import { UserSigninComponent } from './user-signin/user-signin.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { EmpUpdateOrderComponent } from './emp-update-order/emp-update-order.component';
+import { AppNavComponent } from './app-nav/app-nav.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     UserSigninComponent,
     UserSignupComponent,
     UserPanelComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    EmpUpdateOrderComponent,
+    AppNavComponent
   ],
   imports: [
     BrowserModule,

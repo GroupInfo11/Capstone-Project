@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-var Admin = require("../models/adminModel");
 var AdminController = require("../controllers/AdminController");
 
 router.get("/", AdminController.getAllUsers);
