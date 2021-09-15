@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmployeeService } from '../employee.service';
 
@@ -25,7 +25,7 @@ export class AddEmpComponent implements OnInit {
 
   addEmp() {
     let signup = this.addRef.value
-    this.employeeSer.checkSignupDetails(signup).subscribe(result=>{
+    this.employeeSer.checkLoginDetails(signup).subscribe(result=>{
       if(result=="Success"){
         this.router.navigate(["EmployeePanel", signup.user]);
       }else{

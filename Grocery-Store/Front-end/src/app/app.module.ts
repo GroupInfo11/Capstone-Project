@@ -36,6 +36,7 @@ import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { EmpUpdateOrderComponent } from './emp-update-order/emp-update-order.component';
 import { AppNavComponent } from './app-nav/app-nav.component';
+import {AddEmpComponent} from './add-emp/add-emp.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { AppNavComponent } from './app-nav/app-nav.component';
     UserPanelComponent,
     UserDashboardComponent,
     EmpUpdateOrderComponent,
-    AppNavComponent
+    AppNavComponent,
+    AddEmpComponent
   ],
   imports: [
     BrowserModule,
