@@ -123,17 +123,17 @@ module.exports.loginAdmin = async (req, res, next) => {
 
     if (admin && (await bcrypt.compare(password, admin.password))) {
       console.log("Hello");
-      // Create token
-      const token = jwt.sign(
-        { admin_id: admin._id, email },
-        process.env.TOKEN_KEY,
-        {
-          expiresIn: "2h",
-        }
-      );
+      // // Create token
+      // const token = jwt.sign(
+      //   { admin_id: admin._id, email },
+      //   process.env.TOKEN_KEY,
+      //   {
+      //     expiresIn: "2h",
+      //   }
+      // );
 
-      // save user token
-      admin.token = token;
+      // // save user token
+      // admin.token = token;
 
       // user
       console.log(admin);
