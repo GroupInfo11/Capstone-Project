@@ -35,6 +35,7 @@ import { UserSignupComponent } from './user-signup/user-signup.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { EmpUpdateOrderComponent } from './emp-update-order/emp-update-order.component';
+import { DeleteEmpComponent } from './delete-emp/delete-emp.component';
 import { AppNavComponent } from './app-nav/app-nav.component';
 import {AddEmpComponent} from './add-emp/add-emp.component';
 import { UserOrderStatusComponent } from './user-order-status/user-order-status.component';
@@ -62,6 +63,7 @@ import { UserOrderStatusComponent } from './user-order-status/user-order-status.
     EmployeeComponent,
     EmployeeSignInComponent,
     EmployeePanelComponent,
+    DeleteEmpComponent,
 
     GenerateReportsComponent,
     UserSigninComponent,
