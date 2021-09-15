@@ -6,3 +6,11 @@ let addOrder = (req,res) => {
         
     })
 }
+
+let getOrder = async(req,res)=>{
+    let orderInfo = await orderModel.find({});
+    console.log(orderInfo);
+    res.json(orderInfo);
+}
+
+module.exports={addOrder,getOrder};

@@ -1,0 +1,51 @@
+<div>
+    <h2>Order Status</h2>
+    <table border="1" class="table table-bordered table-hover">
+        <tr *ngFor = "let order of orders">
+            <td>Order:
+                <table class="table-plain">
+                    <tr>
+                        <td>Product Name:</td>
+                        <td>Product Price:</td>
+                        <td>Product ID:</td>
+                    </tr>
+                    <tr>
+                        <td>{{order.Order.productName}}</td>
+                        <td>{{order.Order.ProductPrice}}</td>
+                        <td>{{order.Order.ProductId}}</td>
+                    </tr>
+                </table>
+            </td>
+            <td>Order ID:
+                <div>{{order.Order.orderID}}</div>
+            </td>
+            <td>Total Amount: 
+                <div>${{order.totalPrice}}</div>
+            </td>
+            <td>Order Status:
+                <div>{{order.orderStatus}}</div>
+            </td>
+        </tr>
+    </table>
+</div>
+<!-- <table border="5px" bordercolor="#8707B0">
+    <tr >
+        <td>
+            <table border="5px" bordercolor="#F35557">
+                <h4 align="center">Order:</h4>
+                <tr>
+                    <td>Product Name:</td>
+                    <td>Product Price:</td>
+                    <td>Product ID: </td>
+                </tr>
+                <tr>
+                    <td>nested table</td>
+                    <td>nested table</td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            Left side of the main table
+        </td>
+    </tr>
+</table> -->

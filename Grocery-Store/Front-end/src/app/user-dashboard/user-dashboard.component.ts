@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserDashboardComponent implements OnInit {
 
-  constructor(public activatedRoute:ActivatedRoute) { }
+  constructor(public activatedRoute:ActivatedRoute, public router:Router) { }
   username?:string;
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(data=>this.username=data.uname);
@@ -17,6 +17,6 @@ export class UserDashboardComponent implements OnInit {
 
   }
   goToOrderStatus(){
-    
+    this.router.navigate(["UserOrderStatus", this.username]);
   }
 }

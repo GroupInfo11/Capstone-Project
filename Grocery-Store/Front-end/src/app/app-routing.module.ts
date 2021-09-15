@@ -18,6 +18,7 @@ import { ManageProductsComponent } from './manage-products/manage-products.compo
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserOrderStatusComponent } from './user-order-status/user-order-status.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 
@@ -43,5 +44,6 @@ export const applicationRoutes: Routes = [
   {path:"EmployeeSignIn", component:EmployeeSignInComponent},
   {path:"EmployeePanel/:uname", component:EmployeePanelComponent},
   {path:"UserPanel", component:UserPanelComponent},
-  {path:"UserDashboard/:uname", component:UserDashboardComponent}
+  {path:"UserDashboard/:uname", component:UserDashboardComponent},
+  {path:"UserOrderStatus/:uname", component:UserOrderStatusComponent}
 ];
