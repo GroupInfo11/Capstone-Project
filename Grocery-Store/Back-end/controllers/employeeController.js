@@ -12,6 +12,18 @@ let signIn = async(req,res)=>{
     }
 }
 
+let deleteEmp = async(req,res)=>{
+    let deleteid = req.body.id;
+    let userInfo = await employeeModel.findOne({id:deleteid});
+    let info = await employeeModel.deleteOne({userInfo});
+    console.log(userInfo);
+    if(userInfo!=null){
+        res.send("Success");
+    }else{
+        res.send("ID not found");
+    }
+}
+
 let signUp = async(req,res)=>{
     let employee = req.body;
     let userInfo = new employeeModel({_id:employee.id,fName:employee.first,lName:employee.last,email:employee.email,pass:employee.password});
@@ -23,8 +35,7 @@ let signUp = async(req,res)=>{
     }
     })
 }
-
-module.exports = {signIn, signUp};
+module.exports = {signIn, signUp, deleteEmp};
 
 // // let employee = new empModel({_id:signup.id,fName:signup.first,lName:signup.last,email:signup.email});
 // employeeModel.insertMany(employee, (err,result)=> {
