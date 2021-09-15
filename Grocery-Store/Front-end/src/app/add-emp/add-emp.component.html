@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Employee</title>
-</head>
-<body>
+<div class="container">
     <h2>Add Employee</h2>
     <form [formGroup]="addRef" (ngSubmit)="addEmp()">
         <h2>Sign Up</h2>
@@ -16,10 +8,11 @@
         <input type="text" formControlName="first"/><br/>
         <label>Last Name: </label>
         <input type="text" formControlName="last"/><br/>
+        <label>Password: </label>
+        <input type="password" formControlName="password"/><br/>
         <label>Email: </label>
         <input type="email" formControlName="email"/><br/>
         <input type="submit" value="submit" [disabled]="!addRef.valid"/>
         <input type="reset" value="reset"/>
     </form>
-</body>
-</html>
+</div>

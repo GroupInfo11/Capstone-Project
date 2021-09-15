@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AddAdminComponent } from './add-admin/add-admin.component';
+import { AddEmpComponent } from './add-emp/add-emp.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
@@ -38,6 +39,7 @@ export const applicationRoutes: Routes = [
   { path: 'emp-sendRequest', component: EmpSendrequestComponent},
   { path: 'emp-updateOrder' ,component: EmpUpdateOrderComponent},
   {path:"Employee", component:EmployeeComponent},
+  {path:"EmployeeAdd", component:AddEmpComponent},
   {path:"EmployeeSignIn", component:EmployeeSignInComponent},
   {path:"EmployeePanel/:uname", component:EmployeePanelComponent},
   {path:"UserPanel", component:UserPanelComponent},
