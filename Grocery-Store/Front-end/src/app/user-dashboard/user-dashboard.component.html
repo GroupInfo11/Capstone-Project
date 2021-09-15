@@ -2,7 +2,7 @@
 <p>User: {{username}}</p>
 <div class="btn-group" role="group">
     <input type="button" value="Cart" class="btn btn-primary">
-    <input type="button" value="Order Status" class="btn btn-outline-primary">
+    <input type="button" value="Order Status" class="btn btn-outline-primary" (click)="goToOrderStatus()">
     <input type="button" value="Edit Profile" class="btn btn-success">
     <input type="button" value="Funds" class="btn btn-outline-success">
     <input type="button" value="Sign Out" class="btn btn-outline-danger" (click)="backToSignIn()">

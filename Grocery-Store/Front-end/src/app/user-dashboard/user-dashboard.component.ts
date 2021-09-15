@@ -16,4 +16,7 @@ export class UserDashboardComponent implements OnInit {
   backToSignIn(){
 
   }
+  goToOrderStatus(){
+    
+  }
 }

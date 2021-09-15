@@ -15,7 +15,7 @@ let signIn = async(req,res)=>{
 let signUp = async(req,res)=>{
     let employee = req.body;
     let userInfo = new employeeModel({_id:employee.id,fName:employee.first,lName:employee.last,email:employee.email,pass:employee.password});
-    empModel.insertMany(employee, (err,result)=> {
+    employeeModel.insertMany(employee, (err,result)=> {
     if(!err){
         console.log(result)
     } else {
@@ -24,15 +24,14 @@ let signUp = async(req,res)=>{
     })
 }
 
-module.exports = {signIn};
-module.exports = {signUp};
+module.exports = {signIn, signUp};
 
-// let employee = new empModel({_id:signup.id,fName:signup.first,lName:signup.last,email:signup.email});
-empModel.insertMany(employee, (err,result)=> {
-if(!err){
-  console.log(result)
-} else {
-  console.log(err);
-}
-mongoose.disconnect();  
-})
+// // let employee = new empModel({_id:signup.id,fName:signup.first,lName:signup.last,email:signup.email});
+// employeeModel.insertMany(employee, (err,result)=> {
+// if(!err){
+//   console.log(result)
+// } else {
+//   console.log(err);
+// }
+// mongoose.disconnect();  
+// })
