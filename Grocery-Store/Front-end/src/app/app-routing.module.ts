@@ -21,6 +21,7 @@ import { ProductUpdateComponent } from './product-update/product-update.componen
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
+import { UserSignupComponent } from './user-signup/user-signup.component';
 
 export const applicationRoutes: Routes = [
   { path: '', component: AdminLoginComponent },
@@ -45,5 +46,6 @@ export const applicationRoutes: Routes = [
   {path:"EmployeeDelete", component:DeleteEmpComponent},
   {path:"EmployeePanel/:uname", component:EmployeePanelComponent},
   {path:"UserPanel", component:UserPanelComponent},
+  {path:"UserSignIn", component:UserSignupComponent},
   {path:"UserDashboard/:uname", component:UserDashboardComponent}
 ];
