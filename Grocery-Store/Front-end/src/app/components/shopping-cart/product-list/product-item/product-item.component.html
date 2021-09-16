@@ -1,16 +1,20 @@
-<div class="card shadow-sm">
-  <img class="bd-placeholder-img card-img-top" width="100%" [src]="productItem.product_image"/>
-  <h1>Hello</h1>
-  <div class="card-body">
-    <p class="card-text">
-      <strong>{{ productItem.price | currency: "USD"}}</strong>
-    </p>
-    <p class="card-text">{{ productItem.product_name }}</p>
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="btn-group">
+<div style="padding-left: 50px;">
+
+  <div class="card shadow-sm" >
+    <img class="bd-placeholder-img card-img-top" width="70px" height="300px" [src]="productItem.product_image"/>
+    <div class="card-body">
+      <p class="card-text">
+        <strong>{{ productItem.price | currency: "USD"}}</strong>
+      </p>
+      <span class="card-text">{{ productItem.product_name }}</span>&nbsp;
+      <span style="float: right;">
         <button type="button" class="btn btn-sm btn-primary product-btn" (click)="handleAddToCart()">Add to cart</button>
-        <button type="button" class="btn btn-sm btn-outline-secondary product-btn">View Details</button>
-      </div>
+      </span>
+
+
     </div>
   </div>
+
 </div>
+
+<br><br>

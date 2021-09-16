@@ -1,7 +1,10 @@
 <div class="cart-item">
   <span>{{cartItem.product_name}}</span> x <span>{{cartItem.qty}}</span> :
   <strong>{{ (cartItem.qty * cartItem.price) | currency: "USD"}}</strong>&nbsp;
+  <span style="float: right;">
   <button (click)="minusItem()">item -1</button>&nbsp;
   <button (click)="deleteItem()">Delete</button>
+  </span>
+
 </div>
 
