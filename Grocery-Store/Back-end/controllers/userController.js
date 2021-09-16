@@ -93,7 +93,10 @@ let editCustomerFunds = (req,res)=>{
         }
     });
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 70d056401d115df3727aa5c03c8d5100039b6b6c
 let getAllUsers = (req,res)=>{
     userModel.find({}, (err,data)=>{
         if(!err){
