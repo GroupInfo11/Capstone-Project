@@ -15,4 +15,8 @@ export class EmpRequestService {
   addEmployerRequest(empRequest:EmpRequest): Observable<any> {
     return this.http.post("http://localhost:5000/request/addRequest", empRequest, {responseType: 'text'} );
   }
+
+  unlockTicket(email:any,lockStatus:any):Observable<any>{
+    return this.http.put<any>("http://localhost:5000/employee/unlockUser",{email:email,lockStatus:lockStatus});
+  }
 }

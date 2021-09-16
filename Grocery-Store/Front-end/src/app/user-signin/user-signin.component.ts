@@ -12,7 +12,7 @@ import { UserService } from '../user.service';
 export class UserSigninComponent implements OnInit {
  
   signInRef = new FormGroup({
-    id:new FormControl("",[Validators.required]),
+    email:new FormControl("",[Validators.required]),
     password:new FormControl("",[Validators.required])
   })
   msg?:string;

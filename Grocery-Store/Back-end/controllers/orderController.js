@@ -4,14 +4,13 @@ let userModel = require("../models/userModel")
 let updateOrder = (req, res) => {
     let order = req.body;
     if (order.orderStatus == "Cancelled") {
-        //join 2 collections users and order
-        orderModel.aggregate([
+        userModel.aggregate([
             {
                 //find a match id from those two tables
                 $lookup: {
                     from: "Users",
-                    localField: "customerEmail",
-                    foreignField: "customerEmail",
+                    localField: "email",
+                    foreignField: "email",
                     as: "user_email"
                 }
             },
@@ -21,9 +20,9 @@ let updateOrder = (req, res) => {
 
         ]).then(data => {
             data.forEach((item) => {
-                if (item.customerEmail == order.customerEmail) {
+                if (item.email == order.email) {
                     //update data in user table
-                    userModel.updateOne({ customerEmail: order.customerEmail }, { $inc: { funds : item.totalPrice, "user_email.funds": item.user_email.funds} }, (err, result) => {
+                    userModel.updateOne({ customerEmail: order.email }, { $inc: { funds : item.totalPrice, "user_email.funds": item.user_email.funds} }, (err, result) => {
                         if(!err) {
                             res.status(201).send({message: 'Refund to user account successfully'});
                         } else {
@@ -62,10 +61,9 @@ let addOrder = (req, res) => {
 
 let getOrder = async(req,res)=>{
 
-    let orderInfo = await orderModel.find({});
-
     let email = req.params.email;
     console.log(email);
+    
     let orderInfo = await orderModel.aggregate(
         [
             {

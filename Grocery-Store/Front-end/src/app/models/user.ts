@@ -1,9 +1,11 @@
 export class User {
-  fullName: string = '';
-  email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
-  profilePhoto: File = null;
-  address: string = '';
-  card: number = null;
+    email:String;
+    funds:Number;
+    lockStatus:String;
+    fName:String;
+    lName:String;
+    phone:String;
+    address:String;
+    password:String;
+    id:String;
 }

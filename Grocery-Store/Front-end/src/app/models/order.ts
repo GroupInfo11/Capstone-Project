@@ -1,7 +1,4 @@
 export class Order {
-<<<<<<< HEAD
- 
-=======
   _id:Number;
   customerEmail:String;
   Order:[{
@@ -12,5 +9,5 @@ export class Order {
   }];
   totalPrice:Number;
   orderStatus:String;
->>>>>>> 98a9c09ba76b2623fcded83a70ad499eb7098cba
+
 }

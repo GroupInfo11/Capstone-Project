@@ -17,7 +17,7 @@ export class EmpOrderService {
     return this.http.get<Order[]>("http://localhost:5000/order/getOrder");
   }
 
-  updateCustomerOrderStatus(customerEmail:any, orderStatus:any):Observable<any>{
-    return this.http.put<any>("http://localhost:5000/order/updateOrderStatus",{customerEmail:customerEmail, orderStatus:orderStatus, });
+  updateCustomerOrderStatus(email:any, orderStatus:any):Observable<any>{
+    return this.http.put<any>("http://localhost:5000/order/updateOrderStatus",{email:email, orderStatus:orderStatus, });
   }
 }

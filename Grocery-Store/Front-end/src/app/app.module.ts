@@ -49,6 +49,8 @@ import {ProductItemComponent} from 'src/app/components/shopping-cart/product-lis
 import {CartItemComponent} from 'src/app/components/shopping-cart/cart/cart-item/cart-item.component';
 import { UserEditProfileComponent } from './user-edit-profile/user-edit-profile.component';
 import { UserFundsComponent } from './user-funds/user-funds.component';
+import { EmpUnlockUserComponent } from './emp-unlock-user/emp-unlock-user.component';
+
 
 @NgModule({
   declarations: [
@@ -93,7 +95,8 @@ import { UserFundsComponent } from './user-funds/user-funds.component';
 
     UserOrderStatusComponent,
       UserEditProfileComponent,
-      UserFundsComponent
+      UserFundsComponent,
+      EmpUnlockUserComponent
 
   ],
   imports: [

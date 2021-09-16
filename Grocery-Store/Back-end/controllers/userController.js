@@ -63,5 +63,15 @@ let getCustomerFunds = (req,res)=>{
         }
     })
 }
-module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds};
+
+let getAllUsersDetails = (req, res) => {
+    userModel.find({}, (err,data)=> {
+        if(!err){
+            res.send(data);
+        } else {
+            res.send(err);
+        }
+    })
+}
+module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds, getAllUsersDetails};
 

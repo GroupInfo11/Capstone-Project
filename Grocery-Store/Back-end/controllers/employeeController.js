@@ -4,7 +4,7 @@ let userModel = require("../models/userModel");
 let unlockUser = (req,res) => {
     let user = req.body;
     
-    userModel.updateOne({ customerEmail: user.customerEmail}, { $set: { lockStatus: user.lockStatus } }, (err, result) => {
+    userModel.updateOne({ email: user.customerEmail}, { $set: {lockStatus: user.lockStatus}}, (err, result) => {
         if(!err){
             res.status(201).send({message: 'unlock successfully'});
         } else {
@@ -51,6 +51,8 @@ let signUp = async(req,res)=>{
 })
 }
    
+
+module.exports={unlockUser,signUp, deleteEmp, signIn};
 
 
 

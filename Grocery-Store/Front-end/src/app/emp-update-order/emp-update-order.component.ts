@@ -13,7 +13,7 @@ export class EmpUpdateOrderComponent implements OnInit {
   orders:Array<Order>=[];
   flag:boolean = false;
   //variable to update status from user input
-  customerEmail?:String;
+  email?:String;
   orderStatus?:number;
   updateMsg?:string;
 
@@ -26,7 +26,7 @@ export class EmpUpdateOrderComponent implements OnInit {
   ];
 
   orderRef = new FormGroup({
-    customerEmail: new FormControl(),
+    email: new FormControl(),
     operation: new FormControl()
   })
 
@@ -44,15 +44,15 @@ export class EmpUpdateOrderComponent implements OnInit {
     }), error => console.log(error);
   }
 
-  updateStatus(customerEmail:any, orderStatus:any){
+  updateStatus(email:any, orderStatus:any){
     this.updateMsg ="";
     this.flag = true;
-    this.customerEmail = customerEmail;
+    this.email = email;
     this.orderStatus = orderStatus;
   }
 
   nowUpdateOrderStatus(){
-   let cusEmail = this.orderRef.value.customerEmail;
+   let cusEmail = this.orderRef.value.email;
    let updateOrder = this.orderRef.value.operation;
 
    this.empOrderSer.updateCustomerOrderStatus(cusEmail, updateOrder).subscribe( result => {

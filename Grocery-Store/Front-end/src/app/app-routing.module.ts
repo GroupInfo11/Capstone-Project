@@ -28,6 +28,7 @@ import { UserSigninComponent } from './user-signin/user-signin.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { UserEditProfileComponent } from './user-edit-profile/user-edit-profile.component';
 import { UserFundsComponent } from './user-funds/user-funds.component';
+import {EmpUnlockUserComponent} from './emp-unlock-user/emp-unlock-user.component';
 
 export const applicationRoutes: Routes = [
   { path: '', component: AdminLoginComponent },
@@ -58,7 +59,6 @@ export const applicationRoutes: Routes = [
   {path:"UserSignUp", component:UserSignupComponent},
   {path:"UserSignIn", component:UserSigninComponent},
   {path:"UserEditProfile/:uname", component:UserEditProfileComponent},
-  {path:"UserFunds/:uname", component:UserFundsComponent}
-
-
+  {path:"UserFunds/:uname", component:UserFundsComponent},
+  {path: "unlock-user", component:EmpUnlockUserComponent}
 ];
