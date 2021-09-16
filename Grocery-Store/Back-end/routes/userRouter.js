@@ -11,6 +11,6 @@ router.put("/editProfile", userController.updateCustomerDetails);
 router.post("/getCustomerFunds", userController.getCustomerFunds);
 
 router.post("/delete", userController.deleteUser);
-
+router.put("/editCustomerFunds", userController.editCustomerFunds);
 
 module.exports = router;

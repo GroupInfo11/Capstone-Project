@@ -18,7 +18,8 @@ export class UserEditProfileComponent implements OnInit {
     email:new FormControl()
   });
   username?:string;
-  updateMsg?:string;
+  updateMsgGreen?:string;
+  updateMsgRed?:string;
   pass?:string;
   confirmpass?:string;
   address?:string;
@@ -36,7 +37,14 @@ export class UserEditProfileComponent implements OnInit {
     // }
     this.userSer.updateCustomerDetails(this.username, userChangedValues.pass, userChangedValues.confirmpass, userChangedValues.address, userChangedValues.phone, userChangedValues.email)
     .subscribe(result=>{
-      this.updateMsg=result.msg;
+      if(result.msg == "Record modified succesfully!"){
+        this.updateMsgGreen=result.msg;
+        this.updateMsgRed="";
+      }else{
+        this.updateMsgRed=result.msg;
+        this.updateMsgGreen="";
+      }
+      this.userEditProfileRef.reset();
     })
   }
 }
