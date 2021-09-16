@@ -28,7 +28,7 @@ export class UserService {
     return this.http.put<any>("http://localhost:5000/user/editProfile", {username:username, password:password, confirmpass:confirmpass, address:address, phone:phone,email:email});
   }
 
-  getCustomerFundAmount(email:JSON):Observable<any>{
-    return this.http.post("http://localhost:5000/user/getCustomerFunds", email, {responseType:'text'});
+  getCustomerFundAmount(email:string):Observable<any>{
+    return this.http.post("http://localhost:5000/user/getCustomerFunds", {email:email}, {responseType:'text'});
   }
 }

@@ -54,13 +54,14 @@ let updateCustomerDetails = (req,res)=>{
 let getCustomerFunds = (req,res)=>{
     let userEmail = req.body;
     console.log(userEmail.email);
-    // userModel.findOne({email:userEmail}, (err,data)=>{
-    //     if(!err){
-    //         console.log(data);
-    //     }else{
-    //         console.log(err);
-    //     }
-    // })
+    userModel.findOne({email:userEmail.email}, (err,data)=>{
+        if(!err){
+            console.log(data);
+            res.json({funds:data.funds});
+        }else{
+            console.log(err);
+        }
+    })
 }
 module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds};
 
