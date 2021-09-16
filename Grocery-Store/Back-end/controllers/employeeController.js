@@ -14,8 +14,8 @@ let signIn = async(req,res)=>{
 
 let deleteEmp = async(req,res)=>{
     let deleteid = req.body.id;
-    let userInfo = await employeeModel.findOne({id:deleteid});
-    let info = await employeeModel.deleteOne({userInfo});
+    //let userInfo = await employeeModel.findOne({id:deleteid});
+    let userInfo = await employeeModel.deleteOne({user:deleteid});
     console.log(userInfo);
     if(userInfo!=null){
         res.send("Success");
