@@ -21,8 +21,8 @@ export class DeleteEmpComponent implements OnInit {
   }
 
   deleteEmployee() {
-    let id = this.deleteRef.value
-    this.employeeSer.deleteEmployee(id).subscribe(result=>{
+    let info = this.deleteRef.value
+    this.employeeSer.deleteEmployee(info).subscribe(result=>{
       
     },
     error=>console.log(error));

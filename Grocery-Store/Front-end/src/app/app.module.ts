@@ -40,6 +40,16 @@ import { AppNavComponent } from './app-nav/app-nav.component';
 import {AddEmpComponent} from './add-emp/add-emp.component';
 import { UserOrderStatusComponent } from './user-order-status/user-order-status.component';
 
+import {ProductListComponent} from 'src/app/components/shopping-cart/product-list/product-list.component';
+import {CartComponent} from 'src/app/components/shopping-cart/cart/cart.component';
+import {MessengerService} from 'src/app/services/messenger.service';
+import { ProductService } from './services/product.service';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import {ProductItemComponent} from 'src/app/components/shopping-cart/product-list/product-item/product-item.component';
+import {CartItemComponent} from 'src/app/components/shopping-cart/cart/cart-item/cart-item.component';
+import { UserEditProfileComponent } from './user-edit-profile/user-edit-profile.component';
+import { UserFundsComponent } from './user-funds/user-funds.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +83,18 @@ import { UserOrderStatusComponent } from './user-order-status/user-order-status.
     EmpUpdateOrderComponent,
     AppNavComponent,
     AddEmpComponent,
-    UserOrderStatusComponent
+
+
+    ProductListComponent,
+    CartComponent,
+    ShoppingCartComponent,
+    ProductItemComponent,
+    CartItemComponent,
+
+    UserOrderStatusComponent,
+      UserEditProfileComponent,
+      UserFundsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -82,7 +103,7 @@ import { UserOrderStatusComponent } from './user-order-status/user-order-status.
     HttpClientModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
   ],
-  providers: [RegistrationService, AdminAuthGuard, EmpRequestService],
+  providers: [RegistrationService, AdminAuthGuard, EmpRequestService, ProductService, MessengerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

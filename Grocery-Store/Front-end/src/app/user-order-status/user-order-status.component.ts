@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../models/product';
+import { ActivatedRoute } from '@angular/router';
+import { Order } from '../models/order';
+import { Products } from '../products';
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,16 +10,26 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-order-status.component.css']
 })
 export class UserOrderStatusComponent implements OnInit {
-  orders:Array<any>=[];
-  constructor(public userSer:UserService) { }
+  orders:Array<Order>=[];
+  products:Array<Products>=[];
+  msg?:string;
+  email?:string;
+  constructor(public activatedRoute:ActivatedRoute,public userSer:UserService) { }
   
   ngOnInit(): void {
     this.getAllOrders();
+    this.activatedRoute.params.subscribe(data=>this.email = data.uname)
   }
   getAllOrders(){
-    this.userSer.retrieveAllOrdersInfo().subscribe(result=>{
+    this.userSer.retrieveAllOrdersInfo(this.email).subscribe(result=>{
       this.orders = result;
-      console.log(result);
+      for(let x = 0; x<result.length;x++){
+        for(let y = 0; y<result[x].Order.length; y++){
+          this.products.push(result[x].Order[y]);
+        }
+        // this.products.push(result[x].Order);
+      }
+      this.msg = ""+this.products;
     },error=>console.log(error));
   }
 }

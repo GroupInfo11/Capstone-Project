@@ -28,14 +28,18 @@ export class UserSignupComponent implements OnInit {
   signUp() {
     let info = this.signupRef.value;
     // if(login.user == "Paul" && login.pass == "1234")
-    this.userSer.checkLoginDetails(info).subscribe(result=>{
+    this.userSer.makeUser(info).subscribe(result=>{
       if(result=="Success"){
-        this.router.navigate(["EmployeePanel", info.user]);
+        this.router.navigate(["UserSignIn"]);
       }else{
         this.msg = result;
       }
     },
     error=>console.log(error));
     this.signupRef.reset();
+  }
+
+  goToUserSignIn(){
+    this.router.navigate(["UserSignIn"]);
   }
 }

@@ -61,7 +61,38 @@ let addOrder = (req, res) => {
 
 
 let getOrder = async(req,res)=>{
+
     let orderInfo = await orderModel.find({});
+
+    let email = req.params.email;
+    console.log(email);
+    let orderInfo = await orderModel.aggregate(
+        [
+            {
+                $lookup:
+                {
+                    from:"Users",
+                    localField:"customerEmail",
+                    foreignField:"customerEmail",
+                    as:"UserDetails"
+                }
+            },
+            {
+                $unwind: "$UserDetails",
+            }
+        ]
+    );
+    // console.log(orderInfo);
+    // if(orderInfo.customerEmail==o)
+    orderInfo.forEach(o=>{
+        console.log("Order Customer Email: "+o.customerEmail);
+        console.log("User Customer Email: "+o.UserDetails.customerEmail);
+        if(o.customerEmail == o.UserDetails.customerEmail){
+            
+        }else{
+            console.log("ERROR TRY AGAIN")
+        }
+    })
     res.json(orderInfo);
 }
 

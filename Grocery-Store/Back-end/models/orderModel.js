@@ -2,15 +2,14 @@ const mongoose = require("mongoose");
 mongoose.pluralize(null);
 
 var orderSchema = mongoose.Schema({
-  _id:Number,
+  _id:String,
   customerEmail:String,
-  Order:{
+  Order:[{
     productName:String,
     ProductPrice:String,
     ProductId:String,
     created_at: { type: Date, default: Date.now },
-    orderID:Number
-  },
+  }],
   totalPrice:Number,
   orderStatus:String
 });
