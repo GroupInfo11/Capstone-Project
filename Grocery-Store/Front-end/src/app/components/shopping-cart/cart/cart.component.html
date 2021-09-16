@@ -1,0 +1,12 @@
+<h1>Cart:</h1>
+<div *ngIf="cartItems.length === 0" class="alert alert-info">Your cart is empty</div>
+
+
+<ul *ngIf="cartItems.length > 0" class="list-group">
+  <li class="list-group-item" *ngFor="let item of cartItems">
+    <app-cart-item [cartItem]="item" (delete_id)="parentEventHandlerForDelete($event)" (minus_id)="parentEventHandlerForMinus($event)"></app-cart-item>
+  </li>
+  <li class="list-group-item active">
+    <strong>Total:</strong> {{ cartTotal | currency: "USD"}}
+  </li>
+</ul>

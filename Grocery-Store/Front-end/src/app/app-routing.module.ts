@@ -25,6 +25,8 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { UserSignupComponent } from './user-signup/user-signup.component';
 import { UserSigninComponent } from './user-signin/user-signin.component';
 
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+
 export const applicationRoutes: Routes = [
   { path: '', component: AdminLoginComponent },
   { path: 'admin-login', component: AdminLoginComponent },
@@ -48,9 +50,16 @@ export const applicationRoutes: Routes = [
   {path:"EmployeeDelete", component:DeleteEmpComponent},
   {path:"EmployeePanel/:uname", component:EmployeePanelComponent},
   {path:"UserPanel", component:UserPanelComponent},
+
+  {path:"UserSignIn", component:UserSignupComponent},
+  {path:"UserDashboard/:uname", component:UserDashboardComponent},
+
+  {path:'shopping-cart', component:ShoppingCartComponent},
+
   {path:"UserDashboard/:uname", component:UserDashboardComponent},
   {path:"UserOrderStatus/:uname", component:UserOrderStatusComponent},
   {path:"UserSignUp", component:UserSignupComponent},
   {path:"UserSignIn", component:UserSigninComponent}
+
 
 ];
