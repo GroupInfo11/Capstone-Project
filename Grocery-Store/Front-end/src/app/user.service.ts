@@ -12,8 +12,8 @@ export class UserService {
 
   constructor(public http:HttpClient) { }
 
-  retrieveAllOrdersInfo():Observable<Order[]>{
-    return this.http.get<Order[]>("http://localhost:5000/user/getAllOrders");
+  retrieveAllOrdersInfo(email:String):Observable<Order[]>{
+    return this.http.get<Order[]>("http://localhost:5000/user/getAllOrders/"+email);
   }
 
   checkLoginDetails(login:User):Observable<any>{
