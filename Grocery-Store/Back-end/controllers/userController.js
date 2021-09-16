@@ -7,6 +7,7 @@ let signIn = async(req,res)=>{
     console.log(info);
     if(userInfo!=null){
         if(userInfo.lockStatus <= 3){
+            await userModel.updateOne({id:employee.id}, {$set: {lockStatus: 0}});
             res.send("Success");
         }
         else{
