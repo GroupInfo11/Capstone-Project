@@ -1,8 +1,17 @@
 const mongoose = require("mongoose");
 mongoose.pluralize(null);
 
-var requestSchema = mongoose.Schema({
-  orderStatus:String,
+var orderSchema = mongoose.Schema({
+  _id:Number,
+  customerEmail:String,
+  Order:{
+    productName:String,
+    ProductPrice:String,
+    ProductId:String,
+    created_at: { type: Date, default: Date.now }
+  },
+  totalPrice:Number,
+  orderStatus:String
 });
 
-module.exports = mongoose.model("Users", requestSchema);
+module.exports = mongoose.model("Orders", orderSchema);

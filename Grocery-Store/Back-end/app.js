@@ -5,7 +5,9 @@ var productsRouter = require("./routes/product");
 let empRequestRouter = require("./routes/empRequest.route");
 
 var adminRouter = require("./routes/admin");
-var employeeRouter = require("./routes/employeeRouter");
+//var employeeRouter = require("./routes/employeeRouter");
+
+let orderRouter = require("./routes/order")
 
 var cors = require("cors");   
 app.use(cors());
@@ -27,7 +29,8 @@ mongoose
 app.use("/products", productsRouter);
 app.use("/admin", adminRouter);
 app.use("/request", empRequestRouter);
-app.use("/employee", employeeRouter);
+//app.use("/employee", employeeRouter);
+app.use("/order", orderRouter);
 
 app.listen(5000, () => {
   console.log("Listening on port 5000");
