@@ -28,7 +28,7 @@ export class UserSignupComponent implements OnInit {
   signUp() {
     let info = this.signupRef.value;
     // if(login.user == "Paul" && login.pass == "1234")
-    this.userSer.checkLoginDetails(info).subscribe(result=>{
+    this.userSer.makeUser(info).subscribe(result=>{
       if(result=="Success"){
         this.router.navigate(["UserSignIn"]);
       }else{

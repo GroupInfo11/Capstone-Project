@@ -11,11 +11,11 @@ import { EmployeeService } from '../employee.service';
 export class AddEmpComponent implements OnInit {
 
   addRef = new FormGroup({
-    id:new FormControl("",[Validators.required]),
-    first:new FormControl("",[Validators.required]),
-    last:new FormControl("",[Validators.required]),
+    user:new FormControl("",[Validators.required]),
+    fName:new FormControl("",[Validators.required]),
+    lName:new FormControl("",[Validators.required]),
     email:new FormControl("",[Validators.required]),
-    password:new FormControl("",[Validators.required])
+    pass:new FormControl("",[Validators.required])
   });
   msg?:string;
   constructor(public employeeSer:EmployeeService, public router:Router) { }

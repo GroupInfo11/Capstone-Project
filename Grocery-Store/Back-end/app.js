@@ -6,7 +6,7 @@ var productsRouter = require('./routes/product');
 let empRequestRouter = require('./routes/empRequest.route');
 let userRouter = require('./routes/userRouter');
 var adminRouter = require('./routes/admin');
-//var employeeRouter = require("./routes/employeeRouter");
+var employeeRouter = require("./routes/employeeRouter");
 
 let orderRouter = require('./routes/order');
 
@@ -35,7 +35,7 @@ app.use('/products', productsRouter);
 app.use('/admin', adminRouter);
 app.use('/request', empRequestRouter);
 app.use('/order', orderRouter);
-//app.use("/employee", employeeRouter);
+app.use("/employee", employeeRouter);
 app.use('/user', userRouter);
 
 app.listen(5000, () => {

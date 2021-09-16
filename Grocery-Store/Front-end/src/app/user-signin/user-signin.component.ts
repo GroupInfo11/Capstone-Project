@@ -25,7 +25,7 @@ export class UserSigninComponent implements OnInit {
     let login = this.signInRef.value;
     this.userSer.checkLoginDetails(login).subscribe(result=>{
       if(result=="Success"){
-        this.router.navigate(["UserPanel", login.user]);
+        this.router.navigate(["UserPanel"]);
       }else{
         this.msg = result;
       }
