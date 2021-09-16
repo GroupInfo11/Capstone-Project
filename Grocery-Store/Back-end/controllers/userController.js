@@ -3,8 +3,6 @@ let userModel = require("../models/userModel");
 let signIn = async(req,res)=>{
     let employee = req.body;
     let userInfo = await userModel.findOne({id:employee.id, password:employee.password});
-    let info = await userModel.find({});
-    console.log(info);
     if(userInfo!=null){
         if(userInfo.lockStatus <= 3){
             await userModel.updateOne({id:employee.id}, {$set: {lockStatus: 0}});
@@ -74,4 +72,16 @@ let getCustomerFunds = (req,res)=>{
         }
     })
 }
-module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds};
+
+let getAllUsers = (req,res)=>{
+    userModel.find({}, (err,data)=>{
+        if(!err){
+            console.log(data);
+            res.send(data);
+        }else{
+            console.log(err);
+        }
+    })
+}
+
+module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds, getAllUsers};
