@@ -81,16 +81,16 @@ import {CartItemComponent} from 'src/app/components/shopping-cart/cart/cart-item
     EmpUpdateOrderComponent,
     AppNavComponent,
     AddEmpComponent,
-<<<<<<< HEAD
+
 
     ProductListComponent,
     CartComponent,
     ShoppingCartComponent,
     ProductItemComponent,
-    CartItemComponent
-=======
+    CartItemComponent,
+
     UserOrderStatusComponent
->>>>>>> ba19adea708d08afd45cc8ba6f0eff271cc6f132
+
   ],
   imports: [
     BrowserModule,

@@ -50,16 +50,16 @@ export const applicationRoutes: Routes = [
   {path:"EmployeeDelete", component:DeleteEmpComponent},
   {path:"EmployeePanel/:uname", component:EmployeePanelComponent},
   {path:"UserPanel", component:UserPanelComponent},
-<<<<<<< HEAD
+
   {path:"UserSignIn", component:UserSignupComponent},
   {path:"UserDashboard/:uname", component:UserDashboardComponent},
 
-  {path:'shopping-cart', component:ShoppingCartComponent}
-=======
+  {path:'shopping-cart', component:ShoppingCartComponent},
+
   {path:"UserDashboard/:uname", component:UserDashboardComponent},
   {path:"UserOrderStatus/:uname", component:UserOrderStatusComponent},
   {path:"UserSignUp", component:UserSignupComponent},
   {path:"UserSignIn", component:UserSigninComponent}
 
->>>>>>> ba19adea708d08afd45cc8ba6f0eff271cc6f132
+
 ];
