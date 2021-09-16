@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-signup',
@@ -18,14 +20,22 @@ export class UserSignupComponent implements OnInit {
     password:new FormControl("",[Validators.required])
   })
 
-  constructor() { }
-
+  constructor(public userSer:UserService, public router:Router) { }
+  msg?:string;
   ngOnInit(): void {
   }
 
   signUp() {
     let info = this.signupRef.value;
-    
+    // if(login.user == "Paul" && login.pass == "1234")
+    this.userSer.checkLoginDetails(info).subscribe(result=>{
+      if(result=="Success"){
+        this.router.navigate(["EmployeePanel", info.user]);
+      }else{
+        this.msg = result;
+      }
+    },
+    error=>console.log(error));
     this.signupRef.reset();
   }
 }

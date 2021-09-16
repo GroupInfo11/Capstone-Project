@@ -38,6 +38,7 @@ import { EmpUpdateOrderComponent } from './emp-update-order/emp-update-order.com
 import { DeleteEmpComponent } from './delete-emp/delete-emp.component';
 import { AppNavComponent } from './app-nav/app-nav.component';
 import {AddEmpComponent} from './add-emp/add-emp.component';
+import { UserOrderStatusComponent } from './user-order-status/user-order-status.component';
 
 import {ProductListComponent} from 'src/app/components/shopping-cart/product-list/product-list.component';
 import {CartComponent} from 'src/app/components/shopping-cart/cart/cart.component';
@@ -80,12 +81,16 @@ import {CartItemComponent} from 'src/app/components/shopping-cart/cart/cart-item
     EmpUpdateOrderComponent,
     AppNavComponent,
     AddEmpComponent,
+<<<<<<< HEAD
 
     ProductListComponent,
     CartComponent,
     ShoppingCartComponent,
     ProductItemComponent,
     CartItemComponent
+=======
+    UserOrderStatusComponent
+>>>>>>> ba19adea708d08afd45cc8ba6f0eff271cc6f132
   ],
   imports: [
     BrowserModule,
