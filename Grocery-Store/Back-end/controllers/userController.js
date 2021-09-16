@@ -3,19 +3,28 @@ let userModel = require("../models/userModel");
 let signIn = async(req,res)=>{
     let employee = req.body;
     let userInfo = await userModel.findOne({id:employee.id, password:employee.password});
-    let info = await userModel.find({});
-    console.log(info);
     if(userInfo!=null){
-        res.send("Success");
+        if(userInfo.lockStatus <= 3){
+            await userModel.updateOne({id:employee.id}, {$set: {lockStatus: 0}});
+            res.send("Success");
+        }
+        else{
+            res.send("Too many attempts, account locked");
+        }
     }else{
-        res.send("Invalid username or password");
+        let attemptInfo = await userModel.findOne({id:employee.id});
+        if(attemptInfo!=null){
+            await userModel.updateOne({id:employee.id}, {$set: {lockStatus: attemptInfo.lockStatus+1}});
+        }
+        res.send("Wrong password "+ (2-attemptInfo.lockStatus) + " attempts left");
     }
+
+    
 }
 
 let deleteUser = async(req,res)=>{
     let deleteid = req.body.id;
     let userInfo = await userModel.findOne({id:deleteid});
-    let info = await userModel.deleteOne({userInfo});
     console.log(userInfo);
     if(userInfo!=null){
         res.send("Success");
@@ -85,3 +94,15 @@ let editCustomerFunds = (req,res)=>{
     });
 }
 module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds, editCustomerFunds};
+let getAllUsers = (req,res)=>{
+    userModel.find({}, (err,data)=>{
+        if(!err){
+            console.log(data);
+            res.send(data);
+        }else{
+            console.log(err);
+        }
+    })
+}
+
+module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds, editCustomerFunds, getAllUsers};

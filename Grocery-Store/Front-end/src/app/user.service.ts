@@ -16,6 +16,10 @@ export class UserService {
     return this.http.get<Order[]>("http://localhost:5000/user/getAllOrders/"+email);
   }
 
+  getUserDetails():Observable<any>{
+    return this.http.post("http://localhost:5000/user/getAllUsers/", {responseType:'text'});
+  }
+
   checkLoginDetails(login:User):Observable<any>{
     return this.http.post("http://localhost:5000/user/signIn", login, {responseType:'text'});
   }
