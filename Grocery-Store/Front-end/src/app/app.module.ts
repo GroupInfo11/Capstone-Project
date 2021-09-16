@@ -47,6 +47,8 @@ import { ProductService } from './services/product.service';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import {ProductItemComponent} from 'src/app/components/shopping-cart/product-list/product-item/product-item.component';
 import {CartItemComponent} from 'src/app/components/shopping-cart/cart/cart-item/cart-item.component';
+import { UserEditProfileComponent } from './user-edit-profile/user-edit-profile.component';
+import { UserFundsComponent } from './user-funds/user-funds.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +91,9 @@ import {CartItemComponent} from 'src/app/components/shopping-cart/cart/cart-item
     ProductItemComponent,
     CartItemComponent,
 
-    UserOrderStatusComponent
+    UserOrderStatusComponent,
+      UserEditProfileComponent,
+      UserFundsComponent
 
   ],
   imports: [
