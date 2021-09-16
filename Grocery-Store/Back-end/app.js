@@ -3,7 +3,7 @@ let mongoose = require("mongoose");
 let app = express();
 var productsRouter = require("./routes/product");
 let empRequestRouter = require("./routes/empRequest.route");
-
+let userRouter = require("./routes/userRouter");
 var adminRouter = require("./routes/admin");
 //var employeeRouter = require("./routes/employeeRouter");
 
@@ -29,8 +29,9 @@ mongoose
 app.use("/products", productsRouter);
 app.use("/admin", adminRouter);
 app.use("/request", empRequestRouter);
-//app.use("/employee", employeeRouter);
 app.use("/order", orderRouter);
+//app.use("/employee", employeeRouter);
+app.use("/user",userRouter);
 
 app.listen(5000, () => {
   console.log("Listening on port 5000");

@@ -1,6 +1,6 @@
 <div class="container">
     <h2>Add Employee</h2>
-    <form [formGroup]="addRef" (ngSubmit)="addEmp()">
+    <form [formGroup]="addRef" (ngSubmit)="addEmp()" class="form-group">
         <h2>Sign Up</h2>
         <label>Employee ID: </label>
         <input type="text" formControlName="id"/><br/>
@@ -15,4 +15,5 @@
         <input type="submit" value="submit" [disabled]="!addRef.valid"/>
         <input type="reset" value="reset"/>
     </form>
+    Message: {{msg}}
 </div>

@@ -25,7 +25,7 @@ export class AddEmpComponent implements OnInit {
 
   addEmp() {
     let signup = this.addRef.value
-    this.employeeSer.checkLoginDetails(signup).subscribe(result=>{
+    this.employeeSer.checkSignupDetails(signup).subscribe(result=>{
       if(result=="Success"){
         this.router.navigate(["EmployeePanel", signup.user]);
       }else{

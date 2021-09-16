@@ -11,6 +11,7 @@ import { EmpSendrequestComponent } from './emp-sendrequest/emp-sendrequest.compo
 import { EmpUpdateOrderComponent } from './emp-update-order/emp-update-order.component';
 import { EmployeePanelComponent } from './employee-panel/employee-panel.component';
 import { EmployeeSignInComponent } from './employee-sign-in/employee-sign-in.component';
+import { DeleteEmpComponent } from './delete-emp/delete-emp.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ManageAdminsComponent } from './manage-admins/manage-admins.component';
 import { ManageOrdersComponent } from './manage-orders/manage-orders.component';
@@ -18,8 +19,11 @@ import { ManageProductsComponent } from './manage-products/manage-products.compo
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { UserOrderStatusComponent } from './user-order-status/user-order-status.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
+import { UserSignupComponent } from './user-signup/user-signup.component';
+import { UserSigninComponent } from './user-signin/user-signin.component';
 
 export const applicationRoutes: Routes = [
   { path: '', component: AdminLoginComponent },
@@ -41,7 +45,12 @@ export const applicationRoutes: Routes = [
   {path:"Employee", component:EmployeeComponent},
   {path:"EmployeeAdd", component:AddEmpComponent},
   {path:"EmployeeSignIn", component:EmployeeSignInComponent},
+  {path:"EmployeeDelete", component:DeleteEmpComponent},
   {path:"EmployeePanel/:uname", component:EmployeePanelComponent},
   {path:"UserPanel", component:UserPanelComponent},
-  {path:"UserDashboard/:uname", component:UserDashboardComponent}
+  {path:"UserDashboard/:uname", component:UserDashboardComponent},
+  {path:"UserOrderStatus/:uname", component:UserOrderStatusComponent},
+  {path:"UserSignUp", component:UserSignupComponent},
+  {path:"UserSignIn", component:UserSigninComponent}
+
 ];

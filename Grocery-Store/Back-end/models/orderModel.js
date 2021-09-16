@@ -8,7 +8,8 @@ var orderSchema = mongoose.Schema({
     productName:String,
     ProductPrice:String,
     ProductId:String,
-    created_at: { type: Date, default: Date.now }
+    created_at: { type: Date, default: Date.now },
+    orderID:Number
   },
   totalPrice:Number,
   orderStatus:String

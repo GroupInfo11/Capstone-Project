@@ -60,4 +60,11 @@ let addOrder = (req, res) => {
 }
 
 
-module.exports = { updateOrder, addOrder };
+let getOrder = async(req,res)=>{
+    let orderInfo = await orderModel.find({});
+    console.log(orderInfo);
+    res.json(orderInfo);
+}
+
+module.exports={addOrder,getOrder, updateOrder};
+
