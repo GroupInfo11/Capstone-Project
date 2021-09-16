@@ -1,19 +1,60 @@
 <div class="container">
-    <h2>Add Employee</h2>
     <form [formGroup]="addRef" (ngSubmit)="addEmp()" class="form-group">
-        <h2>Sign Up</h2>
-        <label>Employee ID: </label>
-        <input type="text" formControlName="user"/><br/>
-        <label>First Name: </label>
-        <input type="text" formControlName="fName"/><br/>
-        <label>Last Name: </label>
-        <input type="text" formControlName="lName"/><br/>
-        <label>Password: </label>
-        <input type="password" formControlName="pass"/><br/>
-        <label>Email: </label>
-        <input type="email" formControlName="email"/><br/>
-        <input type="submit" value="submit" [disabled]="!addRef.valid"/>
-        <input type="reset" value="reset"/>
+        <div class="container-fluid">
+            <div class = "row">
+                <div class = "col-3">
+                    <h2>Add Employee</h2>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-2">
+                    <label>Employee ID: </label>
+                </div>
+                <div class = "col-2">
+                    <input type="text" formControlName="user"/><br/>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-2">
+                    <label>First Name: </label>
+                </div>
+                <div class = "col-2">
+                    <input type="text" formControlName="fName"/><br/>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-2">
+                    <label>Last Name: </label>
+                </div>
+                <div class = "col-2">
+                    <input type="text" formControlName="lName"/><br/>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-2">
+                    <label>Password: </label>
+                </div>
+                <div class = "col-2">
+                    <input type="password" formControlName="pass"/><br/>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-2">
+                    <label>Email: </label>
+                </div>
+                <div class = "col-2">
+                    <input type="email" formControlName="email"/><br/>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-2">
+                    <input type="submit" value="Submit" class="m-1 btn btn-primary container-fluid" [disabled]="!addRef.valid"/>
+                </div>
+                <div class = "col-2">
+                    <input type="reset" class="m-1 btn btn-warning container-fluid" value="Reset"/>
+                </div>
+            </div>
+        </div>
     </form>
     Message: {{msg}}
 </div>

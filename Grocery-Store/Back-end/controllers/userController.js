@@ -93,7 +93,6 @@ let editCustomerFunds = (req,res)=>{
         }
     });
 }
-module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds, editCustomerFunds};
 let getAllUsers = (req,res)=>{
     userModel.find({}, (err,data)=>{
         if(!err){
