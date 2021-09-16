@@ -30,9 +30,10 @@ import { UserEditProfileComponent } from './user-edit-profile/user-edit-profile.
 import { UserFundsComponent } from './user-funds/user-funds.component';
 import {EmpUnlockUserComponent} from './emp-unlock-user/emp-unlock-user.component';
 import { GenerateReportsComponent } from './generate-reports/generate-reports.component';
+import { indexComponent } from './index.html/index.html.component';
 
 export const applicationRoutes: Routes = [
-  { path: '', component: AdminLoginComponent },
+  { path: '', component: indexComponent },
   { path: 'admin-login', component: AdminLoginComponent },
   { path: 'admin-home', component: AdminHomeComponent },
   { path: 'admin-profile', component: AdminProfileComponent },
