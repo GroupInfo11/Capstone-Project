@@ -35,4 +35,6 @@ let signUp = async(req,res)=>{
     }
     })
 }
+
+
 module.exports = {signIn, signUp, deleteUser};

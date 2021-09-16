@@ -3,7 +3,7 @@ let userModel = require("../models/userModel")
 
 let updateOrder = (req, res) => {
     let order = req.body;
-    if (order.orderStatus == "cancelled") {
+    if (order.orderStatus == "Cancelled") {
         //join 2 collections users and order
         orderModel.aggregate([
             {
@@ -25,7 +25,7 @@ let updateOrder = (req, res) => {
                     //update data in user table
                     userModel.updateOne({ customerEmail: order.customerEmail }, { $inc: { funds : item.totalPrice, "user_email.funds": item.user_email.funds} }, (err, result) => {
                         if(!err) {
-                            res.send("Refund to user fund account successfully");
+                            res.status(201).send({message: 'Refund to user account successfully'});
                         } else {
                             res.send(err);
                         }
@@ -37,7 +37,7 @@ let updateOrder = (req, res) => {
     } else {
         orderModel.updateOne({ customerEmail: order.customerEmail }, { $set: { orderStatus: order.orderStatus } }, (err, result) => {
             if (!err) {
-                res.send("update order successfully");
+                res.status(201).send({message: 'Updated successfully'});
             } else {
                 res.send(err)
             }
@@ -62,7 +62,6 @@ let addOrder = (req, res) => {
 
 let getOrder = async(req,res)=>{
     let orderInfo = await orderModel.find({});
-    console.log(orderInfo);
     res.json(orderInfo);
 }
 
