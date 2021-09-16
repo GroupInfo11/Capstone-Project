@@ -1,4 +1,15 @@
 <div>
-    {{userEmail}}
-    <span>Funds: {{funds}}</span>
+    <h2>{{user}}'s Funds</h2><br>
+    <span>Amount: ${{funds}}</span>
+</div>
+<div>
+    <form  [formGroup]="addFundsRef" (ngSubmit)="editUserFunds()">
+        <label>Account Number: </label>
+        <input type="text" formControlName="acctNum" name="acctNum"><br>
+        <label>Amount to add: </label>
+        <input type="number" formControlName="amount" name="amount"><br>
+        <input type="submit" value="Add Funds">
+        <input type="reset" value="Reset">
+    </form>
+    <span style="color: royalblue;">{{updateMsg}}</span>
 </div>

@@ -3,6 +3,7 @@ mongoose.pluralize(null);
 
 let userSchema = mongoose.Schema({
     email:String,
+    username:String,
     funds:Number,
     lockStatus:String,
     funds:Number,
@@ -11,7 +12,9 @@ let userSchema = mongoose.Schema({
     phone:String,
     address:String,
     password:String,
-    id:String
+    accountNum:String,
+    funds:Number,
+    lockStatus:Number
   });
 
 module.exports = mongoose.model("Users", userSchema);

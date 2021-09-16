@@ -17,7 +17,8 @@ export class UserSignupComponent implements OnInit {
     phone:new FormControl("",[Validators.required]),
     email:new FormControl("",[Validators.required]),
     address:new FormControl("",[Validators.required]),
-    password:new FormControl("",[Validators.required])
+    password:new FormControl("",[Validators.required]),
+    lockStatus:new FormControl("")
   })
 
   constructor(public userSer:UserService, public router:Router) { }
@@ -27,6 +28,7 @@ export class UserSignupComponent implements OnInit {
 
   signUp() {
     let info = this.signupRef.value;
+    info.lockStatus = 0;
     // if(login.user == "Paul" && login.pass == "1234")
     this.userSer.makeUser(info).subscribe(result=>{
       if(result=="Success"){

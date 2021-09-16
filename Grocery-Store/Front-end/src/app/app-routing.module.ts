@@ -29,6 +29,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { UserEditProfileComponent } from './user-edit-profile/user-edit-profile.component';
 import { UserFundsComponent } from './user-funds/user-funds.component';
 import {EmpUnlockUserComponent} from './emp-unlock-user/emp-unlock-user.component';
+import { GenerateReportsComponent } from './generate-reports/generate-reports.component';
 
 export const applicationRoutes: Routes = [
   { path: '', component: AdminLoginComponent },
@@ -60,5 +61,6 @@ export const applicationRoutes: Routes = [
   {path:"UserSignIn", component:UserSigninComponent},
   {path:"UserEditProfile/:uname", component:UserEditProfileComponent},
   {path:"UserFunds/:uname", component:UserFundsComponent},
-  {path: "unlock-user", component:EmpUnlockUserComponent}
+  {path: "unlock-user", component:EmpUnlockUserComponent},
+  {path:"Reports", component:GenerateReportsComponent}
 ];
