@@ -4,13 +4,12 @@ mongoose.pluralize(null);
 var orderSchema = mongoose.Schema({
   _id:Number,
   customerEmail:String,
-  Order:{
+  Order:[{
     productName:String,
     ProductPrice:String,
     ProductId:String,
     created_at: { type: Date, default: Date.now },
-    orderID:Number
-  },
+  }],
   totalPrice:Number,
   orderStatus:String
 });

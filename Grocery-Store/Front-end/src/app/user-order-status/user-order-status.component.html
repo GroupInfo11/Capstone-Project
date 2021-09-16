@@ -9,15 +9,15 @@
                         <td>Product Price:</td>
                         <td>Product ID:</td>
                     </tr>
-                    <tr>
-                        <td>{{order.Order.productName}}</td>
-                        <td>{{order.Order.ProductPrice}}</td>
-                        <td>{{order.Order.ProductId}}</td>
+                    <tr *ngFor = "let product of products">
+                        <td>{{product.productName}}</td>
+                        <td>{{product.ProductPrice}}</td>
+                        <td>{{product.ProductId}}</td>
                     </tr>
                 </table>
             </td>
             <td>Order ID:
-                <div>{{order.Order.orderID}}</div>
+                <div>{{order.orderID}}</div>
             </td>
             <td>Total Amount: 
                 <div>${{order.totalPrice}}</div>
@@ -27,6 +27,7 @@
             </td>
         </tr>
     </table>
+    {{msg}}
 </div>
 <!-- <table border="5px" bordercolor="#8707B0">
     <tr >

@@ -1,5 +1,5 @@
 let employeeModel = require("../models/employeeModel");
-/*
+
 let signIn = async(req,res)=>{
     let employee = req.body;
     let userInfo = await employeeModel.findOne({user:employee.user, pass:employee.pass});
@@ -37,20 +37,6 @@ let signUp = async(req,res)=>{
 }
 module.exports = {signIn, signUp, deleteEmp};
 
-<<<<<<< HEAD
-module.exports = {signIn};
-module.exports = {signUp};
-
-// let employee = new empModel({_id:signup.id,fName:signup.first,lName:signup.last,email:signup.email});
-employeeModel.insertMany(employee, (err,result)=> {
-if(!err){
-  console.log(result)
-} else {
-  console.log(err);
-}
-mongoose.disconnect();  
-})*/
-=======
 // // let employee = new empModel({_id:signup.id,fName:signup.first,lName:signup.last,email:signup.email});
 // employeeModel.insertMany(employee, (err,result)=> {
 // if(!err){
@@ -60,4 +46,3 @@ mongoose.disconnect();
 // }
 // mongoose.disconnect();  
 // })
->>>>>>> dd059e11aaf6bfa8275273c86f50c5ebab1cde03

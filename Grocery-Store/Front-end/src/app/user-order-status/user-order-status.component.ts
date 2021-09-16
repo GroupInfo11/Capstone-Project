@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../models/product';
+import { Order } from '../models/order';
+import { Products } from '../products';
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { UserService } from '../user.service';
   styleUrls: ['./user-order-status.component.css']
 })
 export class UserOrderStatusComponent implements OnInit {
-  orders:Array<any>=[];
+  orders:Array<Order>=[];
+  products:Array<Products>=[];
+  msg?:string;
   constructor(public userSer:UserService) { }
   
   ngOnInit(): void {
@@ -17,7 +20,13 @@ export class UserOrderStatusComponent implements OnInit {
   getAllOrders(){
     this.userSer.retrieveAllOrdersInfo().subscribe(result=>{
       this.orders = result;
-      console.log(result);
+      for(let x = 0; x<result.length;x++){
+        for(let y = 0; y<result[x].Order.length; y++){
+          this.products.push(result[x].Order[y]);
+        }
+        // this.products.push(result[x].Order);
+      }
+      this.msg = ""+this.products;
     },error=>console.log(error));
   }
 }
