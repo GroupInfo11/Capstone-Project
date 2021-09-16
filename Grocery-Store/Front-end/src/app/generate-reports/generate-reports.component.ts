@@ -15,11 +15,5 @@ export class GenerateReportsComponent implements OnInit {
   //Need daily, weekly, monthly reports
   //Specific customer and product reports
 
-//   courseModel.find({},(err,data)=> {
-//     if(!err){
-//         response.json(data);
-//     }else {
-//          response.json(err);   
-//     }
-// })
+
 }

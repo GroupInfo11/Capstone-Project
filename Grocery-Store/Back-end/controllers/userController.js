@@ -6,16 +6,26 @@ let signIn = async(req,res)=>{
     let info = await userModel.find({});
     console.log(info);
     if(userInfo!=null){
-        res.send("Success");
+        if(userInfo.lockStatus <= 3){
+            res.send("Success");
+        }
+        else{
+            res.send("Too many attempts, account locked");
+        }
     }else{
-        res.send("Invalid username or password");
+        let attemptInfo = await userModel.findOne({id:employee.id});
+        if(attemptInfo!=null){
+            await userModel.updateOne({id:employee.id}, {$set: {lockStatus: attemptInfo.lockStatus+1}});
+        }
+        res.send("Wrong password "+ (2-attemptInfo.lockStatus) + " attempts left");
     }
+
+    
 }
 
 let deleteUser = async(req,res)=>{
     let deleteid = req.body.id;
     let userInfo = await userModel.findOne({id:deleteid});
-    let info = await userModel.deleteOne({userInfo});
     console.log(userInfo);
     if(userInfo!=null){
         res.send("Success");

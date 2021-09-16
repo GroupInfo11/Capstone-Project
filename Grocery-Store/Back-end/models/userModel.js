@@ -9,7 +9,8 @@ let userSchema = mongoose.Schema({
     phone:String,
     address:String,
     password:String,
-    id:String
+    id:String,
+    lockStatus:Number
   });
 
 module.exports = mongoose.model("Users", userSchema);
