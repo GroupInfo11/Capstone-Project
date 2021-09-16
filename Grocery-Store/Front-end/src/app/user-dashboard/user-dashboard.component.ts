@@ -14,9 +14,15 @@ export class UserDashboardComponent implements OnInit {
     this.activatedRoute.params.subscribe(data=>this.username=data.uname);
   }
   backToSignIn(){
-
+    this.router.navigate(["UserSignIn"]);
   }
   goToOrderStatus(){
     this.router.navigate(["UserOrderStatus", this.username]);
+  }
+  goToEditProfile(){
+    this.router.navigate(["UserEditProfile", this.username]);
+  }
+  goToUserFunds(){
+    this.router.navigate(["UserFunds", this.username]);
   }
 }

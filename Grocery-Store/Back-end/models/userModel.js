@@ -2,6 +2,7 @@ let mongoose = require("mongoose");
 mongoose.pluralize(null);
 
 let userSchema = mongoose.Schema({
+    _id:String,
     email:String,
     funds:Number,
     fName:String,

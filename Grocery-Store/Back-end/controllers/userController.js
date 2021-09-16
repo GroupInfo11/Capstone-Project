@@ -44,4 +44,33 @@ let signUp = async(req,res)=>{
     }
     })
 }
-module.exports = {signIn, signUp, deleteUser};
+
+let updateCustomerDetails = (req,res)=>{
+    let user = req.body;
+    console.log(user.username);
+    userModel.updateMany({email:user.username}, {$set:{password:user.password, address:user.address, phone:user.phone, email:user.email}},(err,result)=>{
+        if(!err){
+            if(result.modifiedCount > 0){
+                res.json({msg:"Record modified succesfully!"});
+            }else{
+                res.json({msg:"Record not modified..."});
+            }
+        }else{
+            res.send(err);
+        }
+    });
+}
+
+let getCustomerFunds = (req,res)=>{
+    let userEmail = req.body;
+    console.log(userEmail.email);
+    userModel.findOne({email:userEmail.email}, (err,data)=>{
+        if(!err){
+            console.log(data);
+            res.json({funds:data.funds});
+        }else{
+            console.log(err);
+        }
+    })
+}
+module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds};

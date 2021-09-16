@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 mongoose.pluralize(null);
 
 var orderSchema = mongoose.Schema({
-  _id:Number,
+  _id:String,
   customerEmail:String,
   Order:[{
     productName:String,
