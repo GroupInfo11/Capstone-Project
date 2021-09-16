@@ -3,13 +3,13 @@
     <form [formGroup]="addRef" (ngSubmit)="addEmp()" class="form-group">
         <h2>Sign Up</h2>
         <label>Employee ID: </label>
-        <input type="text" formControlName="id"/><br/>
+        <input type="text" formControlName="user"/><br/>
         <label>First Name: </label>
-        <input type="text" formControlName="first"/><br/>
+        <input type="text" formControlName="fName"/><br/>
         <label>Last Name: </label>
-        <input type="text" formControlName="last"/><br/>
+        <input type="text" formControlName="lName"/><br/>
         <label>Password: </label>
-        <input type="password" formControlName="password"/><br/>
+        <input type="password" formControlName="pass"/><br/>
         <label>Email: </label>
         <input type="email" formControlName="email"/><br/>
         <input type="submit" value="submit" [disabled]="!addRef.valid"/>

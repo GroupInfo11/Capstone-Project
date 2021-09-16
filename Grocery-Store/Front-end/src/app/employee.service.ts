@@ -15,7 +15,7 @@ export class EmployeeService {
   }
 
   checkSignupDetails(signup:Employee):Observable<any>{
-    return this.http.post("http://localhost:5000/employee/signUp", signup, {responseType:'text'});
+    return this.http.post("http://localhost:5000/employee/signUp", signup);
   }
 
   deleteEmployee(id:Employee):Observable<any>{

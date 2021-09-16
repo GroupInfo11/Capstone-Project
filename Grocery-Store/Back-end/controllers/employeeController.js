@@ -14,8 +14,8 @@ let signIn = async(req,res)=>{
 
 let deleteEmp = async(req,res)=>{
     let deleteid = req.body.id;
-    let userInfo = await employeeModel.findOne({id:deleteid});
-    let info = await employeeModel.deleteOne({userInfo});
+    //let userInfo = await employeeModel.findOne({id:deleteid});
+    let userInfo = await employeeModel.deleteOne({user:deleteid});
     console.log(userInfo);
     if(userInfo!=null){
         res.send("Success");
@@ -26,10 +26,10 @@ let deleteEmp = async(req,res)=>{
 
 let signUp = async(req,res)=>{
     let employee = req.body;
-    let userInfo = new employeeModel({_id:employee.id,fName:employee.first,lName:employee.last,email:employee.email,pass:employee.password});
+    //let userInfo = new employeeModel({_id:employee.id,fName:employee.first,lName:employee.last,email:employee.email,pass:employee.password});
     employeeModel.insertMany(employee, (err,result)=> {
     if(!err){
-        console.log(result)
+        res.status(201).send({message:result})
     } else {
         console.log(err);
     }

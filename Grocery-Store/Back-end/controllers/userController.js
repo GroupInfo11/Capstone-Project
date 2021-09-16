@@ -2,7 +2,7 @@ let userModel = require("../models/userModel");
 
 let signIn = async(req,res)=>{
     let employee = req.body;
-    let userInfo = await userModel.findOne({user:employee.user, pass:employee.pass});
+    let userInfo = await userModel.findOne({id:employee.id, password:employee.password});
     let info = await userModel.find({});
     console.log(info);
     if(userInfo!=null){
@@ -26,7 +26,6 @@ let deleteUser = async(req,res)=>{
 
 let signUp = async(req,res)=>{
     let user = req.body;
-    let userInfo = new employeeModel({_id:user.id,fName:user.first,lName:user.last,email:user.email,pass:user.password});
     userModel.insertMany(user, (err,result)=> {
     if(!err){
         console.log(result)

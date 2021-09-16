@@ -4,10 +4,13 @@ mongoose.pluralize(null);
 let userSchema = mongoose.Schema({
     _id:String,
     email:String,
-    password:String,
     funds:Number,
+    fName:String,
+    lName:String,
+    phone:String,
     address:String,
-    phone:String
+    password:String,
+    id:String
   });
 
 module.exports = mongoose.model("Users", userSchema);

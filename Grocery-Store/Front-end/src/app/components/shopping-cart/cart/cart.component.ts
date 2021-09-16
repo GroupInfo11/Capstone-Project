@@ -47,7 +47,7 @@ export class CartComponent implements OnInit {
       this.addProductToCart(product);
     })
 
-
+    console.log(this.cartItems);
   }
 
   addProductToCart(product: Product){
