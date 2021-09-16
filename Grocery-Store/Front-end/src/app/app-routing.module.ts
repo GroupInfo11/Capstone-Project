@@ -51,7 +51,6 @@ export const applicationRoutes: Routes = [
   {path:"EmployeePanel/:uname", component:EmployeePanelComponent},
   {path:"UserPanel", component:UserPanelComponent},
 
-  {path:"UserSignIn", component:UserSignupComponent},
   {path:"UserDashboard/:uname", component:UserDashboardComponent},
 
   {path:'shopping-cart', component:ShoppingCartComponent},
