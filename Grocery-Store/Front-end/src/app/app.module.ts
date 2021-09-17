@@ -54,6 +54,7 @@ import { EmpRequestService } from './services/emp-request.service';
 
 
 import {CartUpdateToDatabaseService} from 'src/app/services/cart-update-to-database.service';
+import { EmpProfileEditComponent } from './emp-profile-edit/emp-profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import {CartUpdateToDatabaseService} from 'src/app/services/cart-update-to-datab
       UserFundsComponent,
       EmpUnlockUserComponent,
 
-      indexComponent
+      indexComponent,
+        EmpProfileEditComponent
 
 
   ],

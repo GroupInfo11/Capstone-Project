@@ -31,6 +31,7 @@ import { UserFundsComponent } from './user-funds/user-funds.component';
 import {EmpUnlockUserComponent} from './emp-unlock-user/emp-unlock-user.component';
 import { GenerateReportsComponent } from './generate-reports/generate-reports.component';
 import { indexComponent } from './index.html/index.html.component';
+import { EmpProfileEditComponent} from "./emp-profile-edit/emp-profile-edit.component";
 
 export const applicationRoutes: Routes = [
   { path: '', component: indexComponent },
@@ -63,5 +64,6 @@ export const applicationRoutes: Routes = [
   {path:"UserEditProfile/:uname", component:UserEditProfileComponent},
   {path:"UserFunds/:uname", component:UserFundsComponent},
   {path: "unlock-user", component:EmpUnlockUserComponent},
-  {path:"Reports", component:GenerateReportsComponent}
+  {path:"Reports", component:GenerateReportsComponent},
+  {path: "EmpProfileUpdate", component:EmpProfileEditComponent}
 ];

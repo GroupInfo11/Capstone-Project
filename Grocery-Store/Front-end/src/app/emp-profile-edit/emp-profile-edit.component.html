@@ -1,0 +1,13 @@
+
+<form [formGroup]="empRef" (ngSubmit)="changePassword()">
+    <label>Employee Email</label>
+    <input type="text" formControlName="email"><br/>
+    <label>Old Password</label>
+    <input type="password" formControlName="pass"><br/>
+    <label>New Password</label>
+    <input type="password" formControlName="passNew"> <br />
+    <input type="submit" value="Submit"/>
+    <br/>
+</form>
+
+{{msg}}

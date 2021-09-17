@@ -31,7 +31,6 @@ export class EmpSendrequestComponent implements OnInit {
 
   sendRequest(){ 
       let empReq = this.requestRef.value;
-      console.log(empReq);
       this.empRequestSer.addEmployerRequest(empReq).subscribe(result => {
         this.msg = result
         , err => {console.log(err);}

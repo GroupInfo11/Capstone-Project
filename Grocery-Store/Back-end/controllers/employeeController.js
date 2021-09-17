@@ -3,8 +3,8 @@ let userModel = require("../models/userModel");
 
 let unlockUser = (req,res) => {
     let user = req.body;
-    
-    userModel.updateOne({ email: user.customerEmail}, { $set: {lockStatus: user.lockStatus}}, (err, result) => {
+    console.log(user.email);
+    userModel.updateOne({ email: user.email}, { $set: {lockStatus: user.lockStatus}}, (err, result) => {
         if(!err){
             res.status(201).send({message: 'unlock successfully'});
         } else {
@@ -12,6 +12,19 @@ let unlockUser = (req,res) => {
         }
 
     })
+}
+
+let checkPassword = async (req, res) => {
+    let user = req.body;
+    
+    let userInfo = await employeeModel.findOne({email:user.email, pass:user.pass});
+    
+    if(userInfo!=null){
+        res.send("true");
+    }else {
+        res.send(" employee email not exist");
+    }
+    
 }
 
 
@@ -50,9 +63,22 @@ let signUp = async(req,res)=>{
     }
 })
 }
+
+let updateEmployeePassword = (req,res) =>{
+    let user = req.body;
+    
+    employeeModel.updateOne({ email: user.email}, { $set: {pass: user.passNew}}, (err, result) => {
+        if(!err){
+            res.send("password changed successfully");
+        } else {
+            res.send(err);
+        }
+
+    })
+}
    
 
-module.exports={unlockUser,signUp, deleteEmp, signIn};
+module.exports={unlockUser,signUp, deleteEmp, signIn, checkPassword, updateEmployeePassword};
 
 
 

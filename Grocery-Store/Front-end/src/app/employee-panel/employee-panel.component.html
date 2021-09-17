@@ -1,9 +1,10 @@
 <h2>Welcome to the Employee Panel</h2>
 <p>User: {{username}}</p>
+
 <div class="btn-group" role="group">
-    <a href="http://localhost:4200/emp-sendRequest"><input type="button" value="Send Request" class="btn btn-primary" > </a>
-    <a href="http://localhost:4200/emp-updateOrder"><input type="button" value="Update Order Status" class="btn btn-outline-primary"> </a>
-    <a href="http://localhost:4200/unlock-user"><input type="button" value="Unlock Users" class="btn btn-success"> </a>
-    <input type="button" value="Edit Profile" class="btn btn-outline-success">
+    <input type="button" value="Send Request" class="btn btn-primary" (click)="sendRequest()" >
+    <input type="button" value="Update Order Status" class="btn btn-outline-primary" (click)="updateOrder()"> 
+    <input type="button" value="Unlock Users" class="btn btn-success" (click)="userUnlock()">
+    <input type="button" value="Edit Profile" class="btn btn-outline-success" (click)="empUpdate()">
     <input type="button" value="Sign Out" class="btn btn-outline-danger" (click)="backToSignIn()">
 </div>
