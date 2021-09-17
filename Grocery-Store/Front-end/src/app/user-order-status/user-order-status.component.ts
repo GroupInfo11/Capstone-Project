@@ -27,7 +27,6 @@ export class UserOrderStatusComponent implements OnInit {
     this.userSer.retrieveAllOrdersInfo(this.user).subscribe(result=>{
       this.orders=result;
       console.log("Orders after:"+this.orders);
-      this.orders.forEach(o=>o.Order.forEach(p=>this.products.push(p)));
       console.log("Products: " +this.products);
       // 
       // for(let x = 0; x<this.orders.length;x++){

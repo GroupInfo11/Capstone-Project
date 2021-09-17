@@ -4,9 +4,9 @@
     <img class="bd-placeholder-img card-img-top" width="70px" height="300px" [src]="productItem.product_image"/>
     <div class="card-body">
       <p class="card-text">
-        <strong>{{ productItem.price | currency: "USD"}}</strong>
+        <strong>{{ productItem.ProductPrice | currency: "USD"}}</strong>
       </p>
-      <span class="card-text">{{ productItem.product_name }}</span>&nbsp;
+      <span class="card-text">{{ productItem.productName }}</span>&nbsp;
       <span style="float: right;">
         <button type="button" class="btn btn-sm btn-primary product-btn" (click)="handleAddToCart()">Add to cart</button>
       </span>

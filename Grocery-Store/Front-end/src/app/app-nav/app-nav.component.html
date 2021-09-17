@@ -83,6 +83,11 @@
             >Admins</a
           >
         </li>
+        <li *ngIf="adminLoginStatus">
+          <a routerLink="Reports" class="nav-link px-2 link-secondary"
+            >Generate Reports</a
+          >
+        </li>
       </ul>
   
       <div *ngIf="!adminLoginStatus">
