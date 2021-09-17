@@ -12,5 +12,5 @@ router.post("/getCustomerFunds", userController.getCustomerFunds);
 
 router.post("/delete", userController.deleteUser);
 router.put("/editCustomerFunds", userController.editCustomerFunds);
-
+router.post("/getCustomerDetails", userController.getCustomerDetails);
 module.exports = router;

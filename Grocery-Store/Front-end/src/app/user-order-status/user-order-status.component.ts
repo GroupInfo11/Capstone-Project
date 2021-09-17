@@ -17,19 +17,32 @@ export class UserOrderStatusComponent implements OnInit {
   constructor(public activatedRoute:ActivatedRoute,public userSer:UserService) { }
   
   ngOnInit(): void {
-    this.getAllOrders();
     this.activatedRoute.params.subscribe(data=>this.user = data.uname)
+    this.getAllOrders();
+    
   }
   getAllOrders(){
+    console.log(this.user);
+    console.log("Orders before:" + this.orders);
     this.userSer.retrieveAllOrdersInfo(this.user).subscribe(result=>{
-      // this.orders = result;
-      // for(let x = 0; x<result.length;x++){
-      //   for(let y = 0; y<result[x].Order.length; y++){
-      //     this.products.push(result[x].Order[y]);
+      // this.orders=result;
+      if(result != "Failure"){
+        // this.orders=result;
+      }else{
+        this.msg=result.msg;
+      }
+      console.log("Orders after:"+this.orders);
+      this.orders.forEach(o=>o.Order.forEach(p=>this.products.push(p)));
+      console.log("Products: " +this.products);
+      // 
+      // for(let x = 0; x<this.orders.length;x++){
+      //   for(let y = 0; y<this.orders[x].Order.length; y++){
+      //     this.products.push(this.orders[x].Order[y]);
       //   }
-      //   // this.products.push(result[x].Order);
+      //   // this.products.push(this.orders[x].Order);
       // }
-      // this.msg = ""+this.products;
+      
+      this.msg = ""+this.products;
     },error=>console.log(error));
   }
 }

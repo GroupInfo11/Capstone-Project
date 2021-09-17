@@ -25,10 +25,12 @@ export class UserEditProfileComponent implements OnInit {
   address?:string;
   phone?:string;
   email?:string;
+  userDetails:any;
   constructor(public userSer:UserService, public activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(data=>this.username=data.uname);
+    this.grabCorrectUserDetails();
   }
   updateUser(){
     let userChangedValues = this.userEditProfileRef.value;
@@ -45,6 +47,12 @@ export class UserEditProfileComponent implements OnInit {
         this.updateMsgGreen="";
       }
       this.userEditProfileRef.reset();
+    })
+  }
+  grabCorrectUserDetails(){
+    this.userSer.getCustomerDetailsByUser(this.username).subscribe(result=>{
+      this.userDetails=result;
+      console.log(this.userDetails.password);
     })
   }
 }

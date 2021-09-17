@@ -1,8 +1,9 @@
 import { Product } from './product';
 
 export class Order {
-  _id:Number;
-  customerEmail:String;
+  _id:String;
+  orderID:Number;
+  email:String;
   Order:[{
     productName:String,
     ProductPrice:String,
@@ -11,4 +12,6 @@ export class Order {
   }];
   totalPrice:Number;
   orderStatus:String;
+  __v:Number;
+  user:String;
 }

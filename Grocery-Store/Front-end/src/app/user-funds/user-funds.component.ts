@@ -17,6 +17,7 @@ export class UserFundsComponent implements OnInit {
   funds?:Number;
   updateMsg?:string;
   errorMsg?:string;
+  flag:boolean=false;
   constructor(public userSer:UserService, public activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -27,6 +28,9 @@ export class UserFundsComponent implements OnInit {
     this.userSer.getCustomerFundAmount(this.user).subscribe(result=>{
       this.funds=result;
     })
+  }
+  addUserFunds(){
+    this.flag=!this.flag;
   }
   editUserFunds(){
     let info = this.addFundsRef.value;

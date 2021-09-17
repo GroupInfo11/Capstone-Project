@@ -38,4 +38,8 @@ export class UserService {
   editUserFundsByEmail(user:string, accountNum:string, fundsToAdd:Number):Observable<any>{
     return this.http.put<any>("http://localhost:5000/user/editCustomerFunds", {user:user, accountNum:accountNum, fundsToAdd:fundsToAdd});
   }
+
+  getCustomerDetailsByUser(user:string):Observable<any>{
+    return this.http.post("http://localhost:5000/user/getCustomerDetails", {user:user}, {responseType:'text'});
+  }
 }

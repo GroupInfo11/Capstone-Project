@@ -60,9 +60,19 @@ let addOrder = (req, res) => {
 }
 
 
-let getOrder = async(req,res)=>{
+let getOrder = (req,res)=>{
     let userInfo = req.body;
     console.log(userInfo.user);
+    orderModel.find({user:userInfo.user}, (err,data)=>{
+        if(!err){
+            console.log(data);
+            res.json(data);
+        }else{
+            res.send("Failure");
+        }
+    });
+
+    // console.log(orderInfo);
     // let orderInfo = await orderModel.aggregate(
     //     [
     //         {
@@ -93,5 +103,5 @@ let getOrder = async(req,res)=>{
     // res.json(orderInfo);
 }
 
-module.exports={addOrder,getOrder, updateOrder};
+module.exports={addOrder, getOrder, updateOrder};
 
