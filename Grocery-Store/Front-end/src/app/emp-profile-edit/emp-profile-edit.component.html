@@ -1,13 +1,22 @@
 
-<form [formGroup]="empRef" (ngSubmit)="changePassword()">
-    <label>Employee Email</label>
-    <input type="text" formControlName="email"><br/>
-    <label>Old Password</label>
-    <input type="password" formControlName="pass"><br/>
-    <label>New Password</label>
-    <input type="password" formControlName="passNew"> <br />
-    <input type="submit" value="Submit"/>
-    <br/>
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <form [formGroup]="empRef" class="form-group"(ngSubmit)="changePassword()">
+                <label>Employee Email</label>
+                <input type="text" class="form-control" formControlName="email"><br/>
+                <label>Old Password</label>
+                <input type="password" class="form-control" formControlName="pass"><br/>
+                <label>New Password</label>
+                <input type="password" class="form-control" formControlName="passNew"> <br />
+                <input type="submit" class="btn btn-outline-secondary" value="Submit"/>
+                <br/>
+            </form>
+        </div>     
+    </div>
+    <div>
+        <span class="text-warning">{{msg}}</span>
+    </div>
+</div>
 
-{{msg}}
+
