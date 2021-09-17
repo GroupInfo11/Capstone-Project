@@ -17,9 +17,7 @@ let signIn = async(req,res)=>{
             await userModel.updateOne({username:user.username}, {$set: {lockStatus: attemptInfo.lockStatus+1}});
         }
         res.send("Wrong password "+ (2-attemptInfo.lockStatus) + " attempts left");
-    }
-
-    
+    }   
 }
 
 let deleteUser = async(req,res)=>{
