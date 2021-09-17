@@ -53,6 +53,8 @@ import { indexComponent} from './index.html/index.html.component'
 import { EmpRequestService } from './services/emp-request.service';
 
 
+import {CartUpdateToDatabaseService} from 'src/app/services/cart-update-to-database.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,7 +112,7 @@ import { EmpRequestService } from './services/emp-request.service';
     HttpClientModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
   ],
-  providers: [RegistrationService, AdminAuthGuard, EmpRequestService, ProductService, MessengerService],
+  providers: [RegistrationService, AdminAuthGuard, EmpRequestService, ProductService, MessengerService,CartUpdateToDatabaseService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
