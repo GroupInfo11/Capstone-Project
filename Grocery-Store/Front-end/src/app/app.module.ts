@@ -50,6 +50,8 @@ import {CartItemComponent} from 'src/app/components/shopping-cart/cart/cart-item
 import { UserEditProfileComponent } from './user-edit-profile/user-edit-profile.component';
 import { UserFundsComponent } from './user-funds/user-funds.component';
 
+import {CartUpdateToDatabaseService} from 'src/app/services/cart-update-to-database.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,7 +105,7 @@ import { UserFundsComponent } from './user-funds/user-funds.component';
     HttpClientModule,
     ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
   ],
-  providers: [RegistrationService, AdminAuthGuard, EmpRequestService, ProductService, MessengerService],
+  providers: [RegistrationService, AdminAuthGuard, EmpRequestService, ProductService, MessengerService,CartUpdateToDatabaseService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

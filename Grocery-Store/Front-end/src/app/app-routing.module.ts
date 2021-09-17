@@ -54,7 +54,7 @@ export const applicationRoutes: Routes = [
   {path:"EmployeePanel/:uname", component:EmployeePanelComponent},
   {path:"UserPanel", component:UserPanelComponent},
   {path:"UserDashboard/:uname", component:UserDashboardComponent},
-  {path:'shopping-cart', component:ShoppingCartComponent},
+  {path:'shopping-cart/:uname', component:ShoppingCartComponent},
   {path:"UserOrderStatus/:uname", component:UserOrderStatusComponent},
   {path:"UserSignUp", component:UserSignupComponent},
   {path:"UserSignIn", component:UserSigninComponent},

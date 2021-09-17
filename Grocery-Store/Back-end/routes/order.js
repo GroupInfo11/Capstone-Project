@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require('express');
 let router = express.Router();
-let OrderController = require("../controllers/orderController");
+let OrderController = require('../controllers/orderController');
 
-router.put("/updateOrderStatus", OrderController.updateOrder);
-router.post("/addOrder", OrderController.addOrder);
-
+router.put('/updateOrderStatus', OrderController.updateOrder);
+router.post('/addOrder', OrderController.addOrder);
+router.post('/addCartOrder', OrderController.addCartOrder);
 module.exports = router;
