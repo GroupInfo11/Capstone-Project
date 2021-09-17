@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Order} from "../models/order"
+import { User } from '../models/user';
 
 
 @Injectable({
@@ -20,4 +21,10 @@ export class EmpOrderService {
   updateCustomerOrderStatus(email:any, orderStatus:any):Observable<any>{
     return this.http.put<any>("http://localhost:5000/order/updateOrderStatus",{email:email, orderStatus:orderStatus, });
   }
+
+  // call get method can convert all json data into customer array object. 
+  retrieveUserInfo():Observable<User[]>{
+    return this.http.get<User[]>("http://localhost:5000/user/getCustomerDetails");
+  }
+
 }

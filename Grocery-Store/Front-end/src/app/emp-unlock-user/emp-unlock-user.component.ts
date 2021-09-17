@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import {User} from '../models/user';
 import {EmpRequestService} from '../services/emp-request.service'
-import {EmpOrderService} from '../services/user.service';
+import { User } from '../models/user';
+import {EmpOrderService} from '../services/emp-order.services'
 
 @Component({
   selector: 'app-emp-unlock-user',
@@ -11,7 +11,7 @@ import {EmpOrderService} from '../services/user.service';
 })
 export class EmpUnlockUserComponent implements OnInit {
 
-  ticket:Array<User>=[];
+  ticket:Array<User> = [];
   flag:boolean = false;
   //variable to update status from user input
   email?:String;
@@ -42,8 +42,9 @@ export class EmpUnlockUserComponent implements OnInit {
   }
 
   getAllUsers() {
-    this.userSer.retriveAllUsers().subscribe(result => {
+    this.userSer.retrieveUserInfo().subscribe(result => {
       this.ticket = result;
+      console.log(this.ticket)
     },error=> console.log(error));
   }
 

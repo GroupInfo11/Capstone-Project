@@ -15,8 +15,9 @@ export class UserService {
   retrieveAllOrdersInfo(user:string):Observable<Order[]>{
     return this.http.put<Order[]>("http://localhost:5000/user/getAllOrders", {user:user});
   }
+
   getUserDetails():Observable<any>{
-    return this.http.post("http://localhost:5000/user/getAllUsers", {responseType:'text'});
+    return this.http.put("http://localhost:5000/user/getAllUsers", {responseType:'text'});
   }
 
   checkLoginDetails(login:User):Observable<any>{
