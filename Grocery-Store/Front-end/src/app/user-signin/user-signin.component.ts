@@ -12,7 +12,7 @@ import { UserService } from '../user.service';
 export class UserSigninComponent implements OnInit {
  
   signInRef = new FormGroup({
-    email:new FormControl("",[Validators.required]),
+    username:new FormControl("",[Validators.required]),
     password:new FormControl("",[Validators.required])
   })
   msg?:string;
@@ -25,7 +25,7 @@ export class UserSigninComponent implements OnInit {
     let login = this.signInRef.value;
     this.userSer.checkLoginDetails(login).subscribe(result=>{
       if(result=="Success"){
-        this.router.navigate(["UserPanel"]);
+        this.router.navigate(["UserDashboard",login.username]);
       }else{
         this.msg = result;
       }
