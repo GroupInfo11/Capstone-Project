@@ -1,15 +1,44 @@
-<div *ngIf="customer">
-     <table border="1">
-          <tr>
-               <th>Customer Id</th>
-               <th>Customer Email</th>
-               <th>Customer funds</th>
-          </tr>
-          <tr *ngFor="let user of users">
-               <td>{{user.id}}</td>
-               <td>{{user.email}}</td>
-               <td>{{user.funds}}</td>
-          </tr>
-     </table>
-     Message: {{msg}}
-</div>
+<div class="container">
+     <div class="row">
+       <div class="col">
+          <div *ngIf="customer">
+               <h1>Users</h1>
+               <table class="table" *ngFor="let user of users">
+                    <h2>{{user.username}}</h2>
+                    <tr>
+                         <th>Customer Id</th>
+                         <th>Customer Email</th>
+                         <th>Customer funds</th>
+                         <th>Customer phone number</th>
+                         <th>Customer address</th>
+                    </tr>
+                    <tr>
+                         <td>{{user.id}}</td>
+                         <td>{{user.email}}</td>
+                         <td>{{user.funds}}</td>
+                         <td>{{user.phone}}</td>
+                         <td>{{user.address}}</td>
+                    </tr>
+               </table>
+          </div>
+       </div>
+       <div class="col">
+          <div *ngIf="product">
+               <h1>Products</h1>
+               <table class="table" *ngFor="let product of products">
+                    <h2>{{product.name}}</h2>
+                    <tr>
+                         <th>Product price</th>
+                         <th>Product description</th>
+                         <th>Created at</th>
+                    </tr>
+                    <tr>
+                         <td>{{product.price}}</td>
+                         <td>{{product.description}}</td>
+                         <td>{{product.created_at}}</td>
+                    </tr>
+               </table>
+          </div>
+       </div>
+     </div>
+   </div>

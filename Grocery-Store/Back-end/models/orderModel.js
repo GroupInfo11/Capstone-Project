@@ -13,6 +13,7 @@ var orderSchema = mongoose.Schema({
   }],
   totalPrice:Number,
   orderStatus:String,
+  product_image: String,
   __v:Number,
   user:String
 });
