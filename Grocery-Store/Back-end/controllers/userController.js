@@ -1,20 +1,20 @@
 let userModel = require("../models/userModel");
 
 let signIn = async(req,res)=>{
-    let employee = req.body;
-    let userInfo = await userModel.findOne({id:employee.id, password:employee.password});
+    let user = req.body;
+    let userInfo = await userModel.findOne({username:user.username, password:user.password});
     if(userInfo!=null){
         if(userInfo.lockStatus <= 3){
-            await userModel.updateOne({id:employee.id}, {$set: {lockStatus: 0}});
+            await userModel.updateOne({username:user.username}, {$set: {lockStatus: 0}});
             res.send("Success");
         }
         else{
             res.send("Too many attempts, account locked");
         }
     }else{
-        let attemptInfo = await userModel.findOne({id:employee.id});
+        let attemptInfo = await userModel.findOne({username:user.username});
         if(attemptInfo!=null){
-            await userModel.updateOne({id:employee.id}, {$set: {lockStatus: attemptInfo.lockStatus+1}});
+            await userModel.updateOne({username:user.username}, {$set: {lockStatus: attemptInfo.lockStatus+1}});
         }
         res.send("Wrong password "+ (2-attemptInfo.lockStatus) + " attempts left");
     }

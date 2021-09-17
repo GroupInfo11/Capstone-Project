@@ -20,6 +20,6 @@ export class GenerateReportsComponent implements OnInit {
   //Need daily, weekly, monthly reports
   //Specific customer and product reports
   getAllUsers(){
-    this.users = this.userSer.getUserDetails()
+    this.users = this.userSer.getUserDetails();
   }
 }
