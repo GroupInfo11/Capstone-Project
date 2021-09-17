@@ -16,6 +16,7 @@ export class UserFundsComponent implements OnInit {
   user?:string;
   funds?:Number;
   updateMsg?:string;
+  errorMsg?:string;
   constructor(public userSer:UserService, public activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -31,7 +32,16 @@ export class UserFundsComponent implements OnInit {
     let info = this.addFundsRef.value;
     console.log(info);
     this.userSer.editUserFundsByEmail(this.user, info.acctNum, info.amount).subscribe(result=>{
-      this.updateMsg=result.msg;
+      if(result.msg == "Funds added successfully!"){
+        this.updateMsg=result.msg;
+        // console.log(this.updateMsg);
+        this.errorMsg="";
+      }else{
+        this.errorMsg=result.msg;
+        this.updateMsg="";
+      }
+      this.addFundsRef.reset();
+      this.getCustomerFunds();
     });
   }
 }

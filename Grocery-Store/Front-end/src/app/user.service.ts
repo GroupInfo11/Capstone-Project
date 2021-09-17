@@ -12,12 +12,11 @@ export class UserService {
 
   constructor(public http:HttpClient) { }
 
-  retrieveAllOrdersInfo(email:String):Observable<Order[]>{
-    return this.http.get<Order[]>("http://localhost:5000/user/getAllOrders/"+email);
+  retrieveAllOrdersInfo(user:string):Observable<any>{
+    return this.http.post("http://localhost:5000/user/getAllOrders", {user:user}, {responseType:'text'});
   }
-
   getUserDetails():Observable<any>{
-    return this.http.post("http://localhost:5000/user/getAllUsers/", {responseType:'text'});
+    return this.http.post("http://localhost:5000/user/getAllUsers", {responseType:'text'});
   }
 
   checkLoginDetails(login:User):Observable<any>{
@@ -32,8 +31,8 @@ export class UserService {
     return this.http.put<any>("http://localhost:5000/user/editProfile", {username:username, password:password, confirmpass:confirmpass, address:address, phone:phone,email:email});
   }
 
-  getCustomerFundAmount(email:string):Observable<any>{
-    return this.http.post("http://localhost:5000/user/getCustomerFunds", {email:email}, {responseType:'text'});
+  getCustomerFundAmount(user:string):Observable<any>{
+    return this.http.post("http://localhost:5000/user/getCustomerFunds", {user:user}, {responseType:'text'});
   }
 
   editUserFundsByEmail(user:string, accountNum:string, fundsToAdd:Number):Observable<any>{

@@ -67,8 +67,8 @@ let updateCustomerDetails = (req,res)=>{
 
 let getCustomerFunds = (req,res)=>{
     let userEmail = req.body;
-    console.log(userEmail.email);
-    userModel.findOne({email:userEmail.email}, (err,data)=>{
+    console.log(userEmail.user);
+    userModel.findOne({username:userEmail.user}, (err,data)=>{
         if(!err){
             console.log(data);
             res.send(""+data.funds);
@@ -81,19 +81,20 @@ let getCustomerFunds = (req,res)=>{
 let editCustomerFunds = (req,res)=>{
     let info = req.body;
     console.log(info);
-    userModel.updateOne({user:info.user, accountNum:info.accountNum}, {$set:{funds:info.fundsToAdd}},(err,result)=>{
+    userModel.updateOne({username:info.user, accountNum:info.accountNum}, {$inc:{funds:info.fundsToAdd}},(err,result)=>{
         if(!err){
-            if(result.modifiedCount > 0){
-                res.send("Funds added successfully!");
+            // console.log(result);
+            if(result.nModified > 0){
+                res.json({msg:"Funds added successfully!"});
             }else{
-                res.send("Funds not modified...");
+                res.json({msg:"Funds not modified..."});
             }
         }else{
             res.send(err);
         }
     });
 }
-module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds, editCustomerFunds};
+
 let getAllUsers = (req,res)=>{
     userModel.find({}, (err,data)=>{
         if(!err){

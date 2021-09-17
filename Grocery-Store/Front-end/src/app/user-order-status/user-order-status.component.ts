@@ -13,23 +13,23 @@ export class UserOrderStatusComponent implements OnInit {
   orders:Array<Order>=[];
   products:Array<Products>=[];
   msg?:string;
-  email?:string;
+  user?:string;
   constructor(public activatedRoute:ActivatedRoute,public userSer:UserService) { }
   
   ngOnInit(): void {
     this.getAllOrders();
-    this.activatedRoute.params.subscribe(data=>this.email = data.uname)
+    this.activatedRoute.params.subscribe(data=>this.user = data.uname)
   }
   getAllOrders(){
-    this.userSer.retrieveAllOrdersInfo(this.email).subscribe(result=>{
-      this.orders = result;
-      for(let x = 0; x<result.length;x++){
-        for(let y = 0; y<result[x].Order.length; y++){
-          this.products.push(result[x].Order[y]);
-        }
-        // this.products.push(result[x].Order);
-      }
-      this.msg = ""+this.products;
+    this.userSer.retrieveAllOrdersInfo(this.user).subscribe(result=>{
+      // this.orders = result;
+      // for(let x = 0; x<result.length;x++){
+      //   for(let y = 0; y<result[x].Order.length; y++){
+      //     this.products.push(result[x].Order[y]);
+      //   }
+      //   // this.products.push(result[x].Order);
+      // }
+      // this.msg = ""+this.products;
     },error=>console.log(error));
   }
 }
