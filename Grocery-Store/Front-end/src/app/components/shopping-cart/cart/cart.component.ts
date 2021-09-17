@@ -46,6 +46,9 @@ export class CartComponent implements OnInit {
 }
 
 sendToCheckOut(){
+
+  this.router.navigate(["UserOrderStatus", this.username]);
+
   console.log(this.cartTotal);
   this.order.Order=this.cartItems;
   this.order.totalPrice=this.cartTotal;

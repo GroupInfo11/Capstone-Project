@@ -26,7 +26,7 @@ export class UserDashboardComponent implements OnInit {
     this.router.navigate(["UserFunds", this.username]);
   }
   OrderGrocery(){
-    this.router.navigate(["shopping-cart"]);
+    this.router.navigate(["shopping-cart",this.username]);
   }
 
 }

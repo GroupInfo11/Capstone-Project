@@ -1,24 +1,31 @@
 
-<div class="container">
+<div class="container container-request">
     <h2>Send Request</h2>
-    <form [formGroup]="requestRef" (ngSubmit)="sendRequest()">
-        <label>Employee Email</label>
-        <input type="text" formControlName="empEmail"/><br/>
-        <label>Product Name</label>
-        <input type="text" formControlName="productName"/><br/>
-       <br />
-       <label>Select Request</label>
-        <select formControlName="operation">
-            <option [ngValue]="null" disabled>Select</option>
-            <option *ngFor="let task of tasks" [ngValue]="task.name">{{task.name}}</option>
-          </select>
-          <br />
-          <br />
-          <label>Quantity</label>
-          <input type="text" formControlName="qty"/><br/>
-        <input type="submit" value="Send Request"/>
-    </form>
-</div>
-<div>
-    {{msg}}
+    <div class="row">
+        <div class="col-3">
+            <form  class="form-group"[formGroup]="requestRef" (ngSubmit)="sendRequest()">
+                <label>Employee Email</label>
+                <input class="form-control" type="text" formControlName="empEmail"/><br/>
+                <label>Product Name</label>
+                <input class="form-control" type="text" formControlName="productName"/><br/>
+               <br />
+               <label>Select Request</label>
+                <select class="form-control" id="exampleFormControlSelect1" formControlName="operation">
+                    <option [ngValue]="null" disabled>Select</option>
+                    <option *ngFor="let task of tasks" [ngValue]="task.name">{{task.name}}</option>
+                  </select>
+                  <br />
+                  <br />
+                  <label>Quantity</label>
+                  <input class="form-control" type="text" formControlName="qty"/><br/>
+                  <input type="submit" class="btn btn-outline-dark mr-3" value="Send Request"/>
+                 
+            </form>
+            <input type="submit" class="btn btn-outline-dark" value="Back" (click)="back()"/>
+        </div>
+        <div class="col-6 text-center mt-5 ">
+            <span class="text-warning d-flex justify-content-center h2">{{msg}}</span>
+        </div>
+    </div>
+    
 </div>

@@ -1,38 +1,49 @@
-<div>
-    <h2>View Tickets</h2>
-    <!--table to populate all user cart and button to update-->
-    <table border="1">
-        <tr>
-            <th>first name</th>
-            <th>last name</th>
-            <th>Customer Email</th>
-            <th>lock Status</th>
-            <th>Details</th>
-        </tr>
-        <tr *ngFor="let status of ticket" >
-            <td>{{status.fName}}</td>
-            <td>{{status.lName}}</td>
-            <td>{{status.email}}</td>
-            <td>{{status.lockStatus}}</td>
-            <td>{{status.ticket}}</td>
-            <td><input type="button" value="Update" (click)="requestUnlock(status.email,status.lockStatus)"></td>
-        </tr>
-    </table>
-
-    <div *ngIf="flag">
-        <form [formGroup]="unlockRef" (ngSubmit)="unlockStatus()">
-            <label>customerEmail</label>
-            <input type="text" formControlName="email" [(ngModel)]="email" name="email" readonly/><br/>
-            <label>Order Status</label>
-            <select formControlName="operation">
-                <option [ngValue]="null" disabled>Select</option>
-                <option *ngFor="let task of tasks" [ngValue]="task.name">{{task.name}}</option>
-             </select>
-             <br/>
-            <input type="submit" value="Update Unlock Decision"/>
-            <br/>
-            <input type="reset" value="reset"/>
-        </form>
+<div class="container">
+    <div class="row d-flex flex-column">
+        <div class="col-6">
+            <h2>View Tickets</h2>
+            <!--table to populate all user cart and button to update-->
+            <table class="table">
+                <tr>
+                    <th>first name</th>
+                    <th>last name</th>
+                    <th>Customer Email</th>
+                    <th>lock Status</th>
+                    <th>Details</th>
+                </tr>
+                <tr *ngFor="let status of ticket">
+                    <td>{{status.fName}}</td>
+                    <td>{{status.lName}}</td>
+                    <td>{{status.email}}</td>
+                    <td>{{status.lockStatus}}</td>
+                    <td>{{status.ticket}}</td>
+                    <td><input type="button" class="btn btn-outline-secondary" value="Update"
+                            (click)="requestUnlock(status.email,status.lockStatus)"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-6">
+            <div *ngIf="flag" class="container">
+                <form [formGroup]="unlockRef" (ngSubmit)="unlockStatus()" class='form-group'>
+                    <label>customerEmail</label>
+                    <input type="text" formControlName="email" class='form-control' [(ngModel)]="email" name="email"
+                        readonly /><br />
+                    <label>Order Status</label>
+                    <select formControlName="operation" class='form-control'>
+                        <option [ngValue]="null" disabled>Select</option>
+                        <option *ngFor="let task of tasks" [ngValue]="task.name">{{task.name}}</option>
+                    </select>
+                    <br />
+                    <input type="submit" value="Update Unlock Decision" class="btn btn-outline-secondary" />
+                    <br />
+                    <br/>
+                   
+                </form>
+            </div>
+            <span style="color:red">{{updateMsg}}</span>
+        </div>
     </div>
-    <span style="color:red">{{updateMsg}}</span>
+
+
+    
 </div>
