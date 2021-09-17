@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { Products } from 'src/app/products';
 @Component({
   selector: 'app-cart-item',
   templateUrl: './cart-item.component.html',
@@ -7,27 +7,32 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class CartItemComponent implements OnInit {
 
-  @Input() cartItem: any;
+  @Input() cartItem:Products;
 
-  @Output() delete_id = new EventEmitter<string>();
+  quant=0;
+  price=0;
 
-  @Output() minus_id = new EventEmitter<string>();
+  @Output() delete_id = new EventEmitter<String>();
+
+  @Output() minus_id = new EventEmitter<String>();
 
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.cartItem);
+    this.quant=Number(this.cartItem.Quantity);
+    this.price=Number(this.cartItem.ProductPrice);
 
   }
 
   deleteItem(){
-    this.delete_id.emit(this.cartItem.productId);
-    console.log(this.cartItem.productId);
+    this.delete_id.emit(this.cartItem.ProductId);
+    console.log(this.cartItem.ProductId);
   }
 
   minusItem(){
-    this.minus_id.emit(this.cartItem.productId);
-    console.log(this.cartItem.productId);
+    this.minus_id.emit(this.cartItem.ProductId);
+    console.log(this.cartItem.ProductId);
   }
 
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { Products } from 'src/app/products';
-import { CartOrder } from 'src/app/models/cartOrder';
 import { Order } from 'src/app/models/order';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartUpdateToDatabaseService } from 'src/app/services/cart-update-to-database.service';
@@ -12,7 +11,7 @@ import { CartUpdateToDatabaseService } from 'src/app/services/cart-update-to-dat
 })
 export class CartComponent implements OnInit {
 
-  cartItems:Array<Products>;
+  cartItems:Array<Products>=[];
 
   cartTotal = 0;
   order:Order;
@@ -48,9 +47,9 @@ export class CartComponent implements OnInit {
 
 sendToCheckOut(){
 
-  
 
-  console.log(this.cartTotal);
+
+  console.log(this.order);
   this.order.Order=this.cartItems;
   this.order.totalPrice=this.cartTotal;
   this.order.user=this.username;
@@ -99,6 +98,7 @@ sendToCheckOut(){
         ProductId: product.ProductId,
         productName: product.productName,
         Quantity:1,
+        Description:product.Description,
         ProductPrice:Number(product.ProductPrice),
         product_image: product.product_image,
         created_at: product.created_at
