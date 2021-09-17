@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MessengerService } from 'src/app/services/messenger.service';
-import { Product } from '../../../models/productc';
+import { Products } from 'src/app/products';
 import { CartOrder } from 'src/app/models/cartOrder';
+import { Order } from 'src/app/models/order';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartUpdateToDatabaseService } from 'src/app/services/cart-update-to-database.service';
 @Component({
@@ -11,10 +12,10 @@ import { CartUpdateToDatabaseService } from 'src/app/services/cart-update-to-dat
 })
 export class CartComponent implements OnInit {
 
-  cartItems= [];
+  cartItems:Array<Products>;
 
   cartTotal = 0;
-  order:CartOrder;
+  order:Order;
   username?:string;
 
   constructor(private msg: MessengerService,private cartUpdateToDatabase:CartUpdateToDatabaseService,public activatedRoute:ActivatedRoute, public router:Router) { }
@@ -22,32 +23,32 @@ export class CartComponent implements OnInit {
   valueEmittedFromChildComponent: string = '';
   parentEventHandlerForDelete(valueEmitted){
       this.valueEmittedFromChildComponent = valueEmitted;
-      this.cartItems=this.cartItems.filter(item=>item.productId!=this.valueEmittedFromChildComponent);
+      this.cartItems=this.cartItems.filter(item=>item.ProductId!=this.valueEmittedFromChildComponent);
       this.cartTotal=0
       this.cartItems.forEach(item=>{
-      this.cartTotal+=(item.qty * Number(item.price));
+      this.cartTotal+=(Number(item.Quantity) * Number(item.ProductPrice));
     });
 
   }
 
   parentEventHandlerForMinus(valueEmitted){
     for(let i in this.cartItems){
-      if(this.cartItems[i].productId === valueEmitted){
-        this.cartItems[i].qty--
-        this.cartItems=this.cartItems.filter(item=>item.qty!=0);
+      if(this.cartItems[i].ProductId === valueEmitted){
+        this.cartItems[i].Quantity=Number(this.cartItems[i].Quantity)-1;
+        this.cartItems=this.cartItems.filter(item=>item.Quantity!=0);
         break;
       }
     }
     this.cartTotal=0
     this.cartItems.forEach(item=>{
-    this.cartTotal+=(item.qty * Number(item.price));
+    this.cartTotal+=(Number(item.Quantity) * Number(item.ProductPrice));
   });
 
 }
 
 sendToCheckOut(){
 
-  this.router.navigate(["UserOrderStatus", this.username]);
+  
 
   console.log(this.cartTotal);
   this.order.Order=this.cartItems;
@@ -57,6 +58,7 @@ sendToCheckOut(){
   this.cartUpdateToDatabase.checkCart(this.order).subscribe(result=>{
     if(result=="Success"){
       console.log("Success");
+      this.router.navigate(["UserOrderStatus", this.username]);
     }else{
       console.log("failed");
     }
@@ -71,7 +73,7 @@ sendToCheckOut(){
 
 
 
-    this.msg.getMsg().subscribe((product: Product) =>{
+    this.msg.getMsg().subscribe((product: Products) =>{
       console.log(product);
       this.addProductToCart(product);
     })
@@ -79,13 +81,13 @@ sendToCheckOut(){
     console.log(this.cartItems);
   }
 
-  addProductToCart(product: Product){
+  addProductToCart(product: Products){
 
     let productExists = false;
     for(let i in this.cartItems){
       console.log(product);
-      if(this.cartItems[i].productId === product.product_id){
-        this.cartItems[i].qty++
+      if(this.cartItems[i].ProductId === product.ProductId){
+        this.cartItems[i].Quantity=Number(this.cartItems[i].Quantity)+1;
         productExists=true
         break;
       }
@@ -94,17 +96,18 @@ sendToCheckOut(){
 
     if (!productExists){
       this.cartItems.push({
-        productId: product.product_id,
-        product_name: product.product_name,
-        qty:1,
-        price:Number(product.price)
-
+        ProductId: product.ProductId,
+        productName: product.productName,
+        Quantity:1,
+        ProductPrice:Number(product.ProductPrice),
+        product_image: product.product_image,
+        created_at: product.created_at
       })
     }
 
     this.cartTotal=0
     this.cartItems.forEach(item=>{
-      this.cartTotal+=(item.qty * Number(item.price));
+      this.cartTotal+=(Number(item.Quantity) * Number(item.ProductPrice));
     });
 
   }

@@ -1,13 +1,10 @@
+import { Products } from "../products";
+
 export class Order {
   _id:String;
   orderID:Number;
   email:String;
-  Order:[{
-    productName:String,
-    ProductPrice:String,
-    ProductId:String,
-    created_at: { type: Date, default: String },
-  }];
+  Order:Products[];
   totalPrice:Number;
   orderStatus:String;
   __v:Number;
