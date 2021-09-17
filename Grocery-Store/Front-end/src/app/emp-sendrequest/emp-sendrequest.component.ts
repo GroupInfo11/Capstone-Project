@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EmpRequestService} from '../services/emp-request.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-emp-sendrequest',
@@ -24,7 +25,9 @@ export class EmpSendrequestComponent implements OnInit {
     qty: new FormControl()
   });
   
-  constructor(public empRequestSer: EmpRequestService) { }
+  constructor(public empRequestSer: EmpRequestService,
+    public activatedRoute:ActivatedRoute, 
+    public router:Router) { }
 
   ngOnInit(): void {
   }
@@ -37,6 +40,10 @@ export class EmpSendrequestComponent implements OnInit {
       })
 
       this.requestRef.reset();
+  }
+
+  back(){
+    this.router.navigate(["EmployeePanel/:uname"]);
   }
 
 }

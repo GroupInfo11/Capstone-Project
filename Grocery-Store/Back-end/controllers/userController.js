@@ -100,13 +100,9 @@ let editCustomerFunds = (req,res)=>{
 }
 
 let getAllUsers = (req,res)=>{
-    userModel.find({}, (err,data)=>{
-        if(!err){
-            console.log(data);
-            res.send(data);
-        }else{
-            console.log(err);
-        }
+    userModel.find({}, (err,users)=>{
+		if (err) throw err;
+		res.send(users);
     })
 }
 
