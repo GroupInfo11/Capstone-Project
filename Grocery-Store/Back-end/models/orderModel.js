@@ -9,11 +9,12 @@ var orderSchema = mongoose.Schema({
     productName:String,
     ProductPrice:String,
     ProductId:String,
+    Quantity:Number,
+    product_image: String,
     created_at: { type: Date, default: Date.now },
   }],
   totalPrice:Number,
   orderStatus:String,
-  product_image: String,
   __v:Number,
   user:String
 });
