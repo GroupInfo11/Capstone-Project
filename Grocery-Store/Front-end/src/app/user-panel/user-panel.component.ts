@@ -23,4 +23,5 @@ export class UserPanelComponent implements OnInit {
     this.router.navigate(["UserSignUp"]);
   }
 
+ 
 }

@@ -9,7 +9,7 @@ router.post("/signUp", userController.signUp);
 
 router.put("/editProfile", userController.updateCustomerDetails);
 router.post("/getCustomerFunds", userController.getCustomerFunds);
-router.get("/getallUsers", userController.getAllUsersDetails);
+router.get("/getAllUsers", userController.getAllUsers);
 router.post("/delete", userController.deleteUser);
 router.put("/editCustomerFunds", userController.editCustomerFunds);
 

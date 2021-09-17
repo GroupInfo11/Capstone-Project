@@ -92,5 +92,12 @@ let getOrder = async(req,res)=>{
     // res.json(orderInfo);
 }
 
-module.exports={addOrder,getOrder, updateOrder};
+let getAllOrderDeatils = (req, res) => {
+    orderModel.find({}, (err, products) => {
+		if (err) throw err;
+		res.send(products);
+	});
+}
+
+module.exports={addOrder,getOrder, updateOrder, getAllOrderDeatils};
 

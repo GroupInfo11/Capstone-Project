@@ -107,4 +107,3 @@ let getAllUsers = (req,res)=>{
 }
 
 module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds, editCustomerFunds, getAllUsers};
-

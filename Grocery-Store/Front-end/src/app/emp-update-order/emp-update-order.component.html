@@ -11,7 +11,7 @@
             <td>{{order.orderID}}</td>
             <td>{{order.email}}</td>
             <td>{{order.orderStatus}}</td>
-            <td><input type="button" value="Update" (click)="updateStatus(order.customerEmail,order.orderStatus)"></td>
+            <td><input type="button" value="Update" (click)="updateStatus(order.email,order.orderStatus)"></td>
         </tr>
     </table>
 

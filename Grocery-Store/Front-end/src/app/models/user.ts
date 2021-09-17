@@ -1,11 +1,13 @@
 export class User {
+    _id:String;
     email:String;
+    username:String;
     funds:Number;
-    lockStatus:String;
     fName:String;
     lName:String;
     phone:String;
     address:String;
     password:String;
-    id:String;
+    accountNum:String;
+    lockStatus:String
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { InferencePriority } from 'typescript';
 import { UserService } from '../user.service';
 
 @Component({
@@ -18,7 +19,11 @@ export class UserSignupComponent implements OnInit {
     email:new FormControl("",[Validators.required]),
     address:new FormControl("",[Validators.required]),
     password:new FormControl("",[Validators.required]),
-    lockStatus:new FormControl("")
+    lockStatus:new FormControl(""),
+    fund:new FormControl(),
+    username: new FormControl(),
+    accountNum: new FormControl(),
+
   })
 
   constructor(public userSer:UserService, public router:Router) { }
@@ -28,7 +33,9 @@ export class UserSignupComponent implements OnInit {
 
   signUp() {
     let info = this.signupRef.value;
-    info.lockStatus = 0;
+    info.lockStatus = "";
+    info.funds = 0;
+    info.username = info.id;
     // if(login.user == "Paul" && login.pass == "1234")
     this.userSer.makeUser(info).subscribe(result=>{
       if(result=="Success"){

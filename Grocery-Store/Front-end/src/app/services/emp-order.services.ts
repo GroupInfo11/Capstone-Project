@@ -14,7 +14,7 @@ export class EmpOrderService {
 
   // call get method can convert all json data into customer array object. 
   retrieveAllOrderInfo():Observable<Order[]>{
-    return this.http.get<Order[]>("http://localhost:5000/order/getOrder");
+    return this.http.get<Order[]>("http://localhost:5000/order/getAllOrderDeatils");
   }
 
   updateCustomerOrderStatus(email:any, orderStatus:any):Observable<any>{
