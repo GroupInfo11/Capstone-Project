@@ -44,7 +44,7 @@ export class UserUpdateComponent implements OnInit {
 
   updateUser() {
     if (
-      this.user.fullName != '' &&
+      this.user.fName != '' &&
       this.user.email != '' &&
       this.user.password != ''
     ) {

@@ -25,12 +25,7 @@ export class UserOrderStatusComponent implements OnInit {
     console.log(this.user);
     console.log("Orders before:" + this.orders);
     this.userSer.retrieveAllOrdersInfo(this.user).subscribe(result=>{
-      // this.orders=result;
-      if(result != "Failure"){
-        // this.orders=result;
-      }else{
-        this.msg=result.msg;
-      }
+      this.orders=result;
       console.log("Orders after:"+this.orders);
       this.orders.forEach(o=>o.Order.forEach(p=>this.products.push(p)));
       console.log("Products: " +this.products);
@@ -42,7 +37,7 @@ export class UserOrderStatusComponent implements OnInit {
       //   // this.products.push(this.orders[x].Order);
       // }
       
-      this.msg = ""+this.products;
+      // this.msg = ""+this.products;
     },error=>console.log(error));
   }
 }

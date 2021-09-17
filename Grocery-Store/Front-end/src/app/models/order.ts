@@ -1,5 +1,3 @@
-import { Product } from './product';
-
 export class Order {
   _id:String;
   orderID:Number;

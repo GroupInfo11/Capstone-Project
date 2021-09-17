@@ -1,0 +1,60 @@
+.wrapper {
+    padding: 0;
+    background-image: url('https://images.unsplash.com/photo-1593014290067-93bac771f1c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+header h1 {
+    font-size: 60px;
+}
+
+/*Nav Section*/
+.logo {
+    width: 100px;
+    height: 87px;
+}
+
+.wrapper-nav {
+    font-family: 'Comfortaa', cursive;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.nav-item {
+    padding-right: 15px; 
+}
+
+.nav-home a {
+    border-bottom: 1px solid #ce6451;
+}
+
+.nav-list-menu{
+    font-size: 12px;
+    background-color: rgb(160, 150, 150);
+    opacity: 0.8;
+}
+
+.nav-list-menu a:hover  {
+    color: grey;
+    background-color: #4d4746;
+}
+
+/*Banner Section*/
+.head-title {
+    height: 500px;
+    opacity: 0.5;
+}
+
+.img-list {
+    transition: transform .2s;
+}
+
+.img-list:hover {
+    transform: scale(1.2); 
+    z-index: 1;
+}
+

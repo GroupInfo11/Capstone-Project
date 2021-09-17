@@ -1,17 +1,17 @@
-let orderModel = require("../models/orderModel");
-let userModel = require("../models/userModel")
+let orderModel = require('../models/orderModel');
+let userModel = require('../models/userModel');
+let cartAddModel = require('../models/cartOrderModel');
 
 let updateOrder = (req, res) => {
     let order = req.body;
-    if (order.orderStatus == "cancelled") {
-        //join 2 collections users and order
-        orderModel.aggregate([
+    if (order.orderStatus == "Cancelled") {
+        userModel.aggregate([
             {
                 //find a match id from those two tables
                 $lookup: {
                     from: "Users",
-                    localField: "customerEmail",
-                    foreignField: "customerEmail",
+                    localField: "email",
+                    foreignField: "email",
                     as: "user_email"
                 }
             },
@@ -21,11 +21,11 @@ let updateOrder = (req, res) => {
 
         ]).then(data => {
             data.forEach((item) => {
-                if (item.customerEmail == order.customerEmail) {
+                if (item.email == order.email) {
                     //update data in user table
-                    userModel.updateOne({ customerEmail: order.customerEmail }, { $inc: { funds : item.totalPrice, "user_email.funds": item.user_email.funds} }, (err, result) => {
+                    userModel.updateOne({ customerEmail: order.email }, { $inc: { funds : item.totalPrice, "user_email.funds": item.user_email.funds} }, (err, result) => {
                         if(!err) {
-                            res.send("Refund to user fund account successfully");
+                            res.status(201).send({message: 'Refund to user account successfully'});
                         } else {
                             res.send(err);
                         }
@@ -37,7 +37,7 @@ let updateOrder = (req, res) => {
     } else {
         orderModel.updateOne({ customerEmail: order.customerEmail }, { $set: { orderStatus: order.orderStatus } }, (err, result) => {
             if (!err) {
-                res.send("update order successfully");
+                res.status(201).send({message: 'Updated successfully'});
             } else {
                 res.send(err)
             }
@@ -47,29 +47,36 @@ let updateOrder = (req, res) => {
 }
 
 let addOrder = (req, res) => {
-    let order = req.body;
+	let order = req.body;
 
-    orderModel.insertMany(order, (err, result) => {
-        if (!err) {
-            res.send("Send a order request successfully");
-        } else {
-            res.send(err);
-        }
-    })
+	orderModel.insertMany(order, (err, result) => {
+		if (!err) {
+			res.send('Send a order request successfully');
+		} else {
+			res.send(err);
+		}
+	});
+};
 
-}
+let addCartOrder = (req, res) => {
+	let order = req.body;
 
+	cartAddModel.insertMany(order, (err, result) => {
+		if (!err) {
+			res.send('Send a order request successfully');
+		} else {
+			res.send(err);
+		}
+	});
+};
 
 let getOrder = (req,res)=>{
     let userInfo = req.body;
     console.log(userInfo.user);
     orderModel.find({user:userInfo.user}, (err,data)=>{
-        if(!err){
-            console.log(data);
-            res.json(data);
-        }else{
-            res.send("Failure");
-        }
+        if(err) throw err;
+        console.log(data);
+        res.send(data);
     });
 
     // console.log(orderInfo);
@@ -103,5 +110,11 @@ let getOrder = (req,res)=>{
     // res.json(orderInfo);
 }
 
-module.exports={addOrder, getOrder, updateOrder};
+let getAllOrderDeatils = (req, res) => {
+    orderModel.find({}, (err, products) => {
+		if (err) throw err;
+		res.send(products);
+	});
+}
 
+module.exports={addOrder, addCartOrder, getOrder, updateOrder, getAllOrderDeatils};

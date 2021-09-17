@@ -1,4 +1,19 @@
 let employeeModel = require("../models/employeeModel");
+let userModel = require("../models/userModel");
+
+let unlockUser = (req,res) => {
+    let user = req.body;
+    
+    userModel.updateOne({ email: user.customerEmail}, { $set: {lockStatus: user.lockStatus}}, (err, result) => {
+        if(!err){
+            res.status(201).send({message: 'unlock successfully'});
+        } else {
+            res.send(err);
+        }
+
+    })
+}
+
 
 let signIn = async(req,res)=>{
     let employee = req.body;
@@ -33,16 +48,13 @@ let signUp = async(req,res)=>{
     } else {
         console.log(err);
     }
-    })
+})
 }
-module.exports = {signIn, signUp, deleteEmp};
+   
 
-// // let employee = new empModel({_id:signup.id,fName:signup.first,lName:signup.last,email:signup.email});
-// employeeModel.insertMany(employee, (err,result)=> {
-// if(!err){
-//   console.log(result)
-// } else {
-//   console.log(err);
-// }
-// mongoose.disconnect();  
-// })
+module.exports={unlockUser,signUp, deleteEmp, signIn};
+
+
+
+
+

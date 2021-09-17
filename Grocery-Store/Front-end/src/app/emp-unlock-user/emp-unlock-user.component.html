@@ -1,22 +1,22 @@
 <div>
-    <h2>Update Order Status</h2>
+    <h2>View Tickets</h2>
     <!--table to populate all user cart and button to update-->
     <table border="1">
         <tr>
-            <th>Order Id</th>
             <th>Customer Email</th>
-            <th>Order Status</th>
+            <th>lock Status</th>
+            <th>Details</th>
         </tr>
-        <tr *ngFor="let order of orders" >
-            <td>{{order.orderID}}</td>
-            <td>{{order.email}}</td>
-            <td>{{order.orderStatus}}</td>
-            <td><input type="button" value="Update" (click)="updateStatus(order.email,order.orderStatus)"></td>
+        <tr *ngFor="let status of ticket" >
+            <td>{{status.email}}</td>
+            <td>{{status.lockStatus}}</td>
+            <td>{{status.ticket}}</td>
+            <td><input type="button" value="Update" (click)="requestUnlock(status.email,status.lockStatus)"></td>
         </tr>
     </table>
 
     <div *ngIf="flag">
-        <form [formGroup]="orderRef" (ngSubmit)="nowUpdateOrderStatus()">
+        <form [formGroup]="unlockRef" (ngSubmit)="unlockStatus()">
             <label>customerEmail</label>
             <input type="text" formControlName="email" [(ngModel)]="email" name="email" readonly/><br/>
             <label>Order Status</label>
@@ -25,7 +25,7 @@
                 <option *ngFor="let task of tasks" [ngValue]="task.name">{{task.name}}</option>
              </select>
              <br/>
-            <input type="submit" value="Update Order Status"/>
+            <input type="submit" value="Update Unlock Decision"/>
             <br/>
             <input type="reset" value="reset"/>
         </form>

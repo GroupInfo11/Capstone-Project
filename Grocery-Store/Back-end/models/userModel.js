@@ -12,8 +12,7 @@ let userSchema = mongoose.Schema({
     address:String,
     password:String,
     accountNum:String,
-    funds:Number,
-    lockStatus:Number
+    lockStatus:String
   });
 
 module.exports = mongoose.model("Users", userSchema);

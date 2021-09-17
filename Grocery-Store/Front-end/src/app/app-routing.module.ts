@@ -28,10 +28,12 @@ import { UserSigninComponent } from './user-signin/user-signin.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { UserEditProfileComponent } from './user-edit-profile/user-edit-profile.component';
 import { UserFundsComponent } from './user-funds/user-funds.component';
+import {EmpUnlockUserComponent} from './emp-unlock-user/emp-unlock-user.component';
 import { GenerateReportsComponent } from './generate-reports/generate-reports.component';
+import { indexComponent } from './index.html/index.html.component';
 
 export const applicationRoutes: Routes = [
-  { path: '', component: AdminLoginComponent },
+  { path: '', component: indexComponent },
   { path: 'admin-login', component: AdminLoginComponent },
   { path: 'admin-home', component: AdminHomeComponent },
   { path: 'admin-profile', component: AdminProfileComponent },
@@ -54,13 +56,12 @@ export const applicationRoutes: Routes = [
   {path:"EmployeePanel/:uname", component:EmployeePanelComponent},
   {path:"UserPanel", component:UserPanelComponent},
   {path:"UserDashboard/:uname", component:UserDashboardComponent},
-  {path:'shopping-cart', component:ShoppingCartComponent},
+  {path:'shopping-cart/:uname', component:ShoppingCartComponent},
   {path:"UserOrderStatus/:uname", component:UserOrderStatusComponent},
   {path:"UserSignUp", component:UserSignupComponent},
   {path:"UserSignIn", component:UserSigninComponent},
   {path:"UserEditProfile/:uname", component:UserEditProfileComponent},
   {path:"UserFunds/:uname", component:UserFundsComponent},
+  {path: "unlock-user", component:EmpUnlockUserComponent},
   {path:"Reports", component:GenerateReportsComponent}
-
-
 ];
