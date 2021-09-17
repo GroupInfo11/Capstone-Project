@@ -9,5 +9,5 @@ export class User {
     address:String;
     password:String;
     accountNum:String;
-    lockStatus:String
+    lockStatus:Number
 }

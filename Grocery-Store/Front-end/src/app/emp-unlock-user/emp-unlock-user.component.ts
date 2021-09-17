@@ -49,10 +49,14 @@ export class EmpUnlockUserComponent implements OnInit {
 
   unlockStatus(){
     let email = this.unlockRef.value.email;
-    let unlock = this.unlockRef.value.operation;
-    console.log(email);
-    console.log(unlock);
-    this.ticketSer.unlockTicket(email, unlock).subscribe( result => {
+    let unlockStatus = this.unlockRef.value.operation;
+    let status:Number = 0;
+
+    if(unlockStatus == "3"){
+      status = 0;
+    } 
+
+    this.ticketSer.unlockTicket(email, status).subscribe( result => {
       this.updateMsg = result.message;
       this.flag = false;
       this.getAllUsers();
