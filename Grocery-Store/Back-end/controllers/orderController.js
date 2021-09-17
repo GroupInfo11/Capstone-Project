@@ -70,32 +70,46 @@ let addCartOrder = (req, res) => {
 	});
 };
 
-let getOrder = async (req, res) => {
-	let userInfo = req.body;
-	console.log(userInfo.user);
-	// let orderInfo = await orderModel.aggregate(
-	//     [
-	//         {
-	//             $lookup:
-	//             {
-	//                 from:"Users",
-	//                 localField:"customerEmail",
-	//                 foreignField:"customerEmail",
-	//                 as:"UserDetails"
-	//             }
-	//         },
-	//         {
-	//             $unwind: "$UserDetails",
-	//         }
-	//     ]
-	// );
-	// console.log(orderInfo);
-	// if(orderInfo.customerEmail==o)
-	// orderInfo.forEach(o=>{
-	//     console.log("Order Customer Email: "+o.customerEmail);
-	//     console.log("User Customer Email: "+o.UserDetails.customerEmail);
-	//     if(o.customerEmail == o.UserDetails.customerEmail){
+let getOrder = (req,res)=>{
+    let userInfo = req.body;
+    console.log(userInfo.user);
+    orderModel.find({user:userInfo.user}, (err,data)=>{
+        if(err) throw err;
+        console.log(data);
+        res.send(data);
+    });
+
+    // console.log(orderInfo);
+    // let orderInfo = await orderModel.aggregate(
+    //     [
+    //         {
+    //             $lookup:
+    //             {
+    //                 from:"Users",
+    //                 localField:"customerEmail",
+    //                 foreignField:"customerEmail",
+    //                 as:"UserDetails"
+    //             }
+    //         },
+    //         {
+    //             $unwind: "$UserDetails",
+    //         }
+    //     ]
+    // );
+    // console.log(orderInfo);
+    // if(orderInfo.customerEmail==o)
+    // orderInfo.forEach(o=>{
+    //     console.log("Order Customer Email: "+o.customerEmail);
+    //     console.log("User Customer Email: "+o.UserDetails.customerEmail);
+    //     if(o.customerEmail == o.UserDetails.customerEmail){
+            
+    //     }else{
+    //         console.log("ERROR TRY AGAIN")
+    //     }
+    // })
+    // res.json(orderInfo);
 }
+
 let getAllOrderDeatils = (req, res) => {
     orderModel.find({}, (err, products) => {
 		if (err) throw err;
@@ -103,5 +117,4 @@ let getAllOrderDeatils = (req, res) => {
 	});
 }
 
-module.exports={addOrder,getOrder, updateOrder, getAllOrderDeatils};
-
+module.exports={addOrder, addCartOrder, getOrder, updateOrder, getAllOrderDeatils};

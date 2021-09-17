@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { User } from '../models/user';
 import { UserService } from '../user.service';
 
 @Component({
@@ -10,12 +11,11 @@ import { UserService } from '../user.service';
 })
 export class UserEditProfileComponent implements OnInit {
   userEditProfileRef = new FormGroup({
-    username: new FormControl(),
-    pass: new FormControl(),
-    confirmpass: new FormControl(),
-    address:new FormControl(),
-    phone:new FormControl(),
-    email:new FormControl()
+    pass: new FormControl("",Validators.required),
+    confirmpass: new FormControl("",Validators.required),
+    address:new FormControl("",Validators.required),
+    phone:new FormControl("",Validators.required),
+    email:new FormControl("",Validators.required)
   });
   username?:string;
   updateMsgGreen?:string;
@@ -25,10 +25,12 @@ export class UserEditProfileComponent implements OnInit {
   address?:string;
   phone?:string;
   email?:string;
+  userDetails:User;
   constructor(public userSer:UserService, public activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(data=>this.username=data.uname);
+    this.grabCorrectUserDetails();
   }
   updateUser(){
     let userChangedValues = this.userEditProfileRef.value;
@@ -45,6 +47,18 @@ export class UserEditProfileComponent implements OnInit {
         this.updateMsgGreen="";
       }
       this.userEditProfileRef.reset();
+      this.grabCorrectUserDetails();
+    })
+  }
+  grabCorrectUserDetails(){
+    this.userSer.getCustomerDetailsByUser(this.username).subscribe(result=>{
+      this.userDetails=result;
+      this.pass=this.userDetails[0].password;
+      this.confirmpass=this.userDetails[0].password;
+      this.address=this.userDetails[0].address;
+      this.phone=this.userDetails[0].phone;
+      this.email=this.userDetails[0].email;
+      console.log();
     })
   }
 }

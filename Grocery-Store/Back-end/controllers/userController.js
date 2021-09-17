@@ -50,19 +50,23 @@ let updateCustomerDetails = (req,res)=>{
     // if((user.password!=null && user.confirmpass!=null) && (user.password != user.confirmpass)){
     //     res.json({msg:"Please enter a matching password in both password fields."})
     // }
-
-    userModel.updateOne({username:user.username}, {$set:{password:user.password, address:user.address, phone:user.phone, email:user.email}},(err,result)=>{
-        if(!err){
-            console.log(result)
-            if(result.nModified > 0){
-                res.json({msg:"Record modified succesfully!"});
+    if(user.password != null && (user.password == user.confirmpass)){
+        userModel.updateOne({username:user.username}, {$set:{password:user.password, address:user.address, phone:user.phone, email:user.email}},(err,result)=>{
+            if(!err){
+                console.log(result)
+                if(result.nModified > 0){
+                    res.json({msg:"Record modified succesfully!"});
+                }else{
+                    res.json({msg:"Record not modified..."});
+                }
             }else{
-                res.json({msg:"Record not modified..."});
+                res.send(err);
             }
-        }else{
-            res.send(err);
-        }
-    });
+        });
+    }else{
+        res.json({msg:"Please enter a matching password in both password fields."})
+    }
+    
 }
 
 let getCustomerFunds = (req,res)=>{
@@ -106,4 +110,17 @@ let getAllUsers = (req,res)=>{
     })
 }
 
-module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds, editCustomerFunds, getAllUsers};
+let getCustomerDetails = (req,res)=>{
+    let info = req.body;
+    console.log(info);
+    userModel.find({username:info.user}, (err,data)=>{
+        if(!err){
+            console.log(data);
+            res.send(data);
+        }else{
+            console.log(err);
+        }
+    });
+}
+
+module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds, editCustomerFunds, getAllUsers, getCustomerDetails};

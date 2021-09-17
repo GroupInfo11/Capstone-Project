@@ -3,7 +3,8 @@ mongoose.pluralize(null);
 
 var orderSchema = mongoose.Schema({
   _id:String,
-  customerEmail:String,
+  orderID:Number,
+  email:String,
   Order:[{
     productName:String,
     ProductPrice:String,
@@ -11,7 +12,9 @@ var orderSchema = mongoose.Schema({
     created_at: { type: Date, default: Date.now },
   }],
   totalPrice:Number,
-  orderStatus:String
+  orderStatus:String,
+  __v:Number,
+  user:String
 });
 
 module.exports = mongoose.model("Orders", orderSchema);

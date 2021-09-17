@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../../../Back-end/models/userModel'
+import { Order } from './models/order';
 
 
 @Injectable({
@@ -11,8 +12,8 @@ export class UserService {
 
   constructor(public http:HttpClient) { }
 
-  retrieveAllOrdersInfo(user:string):Observable<any>{
-    return this.http.post("http://localhost:5000/user/getAllOrders", {user:user}, {responseType:'text'});
+  retrieveAllOrdersInfo(user:string):Observable<Order[]>{
+    return this.http.put<Order[]>("http://localhost:5000/user/getAllOrders", {user:user});
   }
   getUserDetails():Observable<any>{
     return this.http.post("http://localhost:5000/user/getAllUsers", {responseType:'text'});
@@ -36,5 +37,9 @@ export class UserService {
 
   editUserFundsByEmail(user:string, accountNum:string, fundsToAdd:Number):Observable<any>{
     return this.http.put<any>("http://localhost:5000/user/editCustomerFunds", {user:user, accountNum:accountNum, fundsToAdd:fundsToAdd});
+  }
+
+  getCustomerDetailsByUser(user:string):Observable<User>{
+    return this.http.put<User>("http://localhost:5000/user/getCustomerDetails", {user:user});
   }
 }
