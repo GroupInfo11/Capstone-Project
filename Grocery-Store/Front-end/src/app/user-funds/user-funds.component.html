@@ -1,18 +1,21 @@
-<div>
-    <h2>{{user}}'s Funds</h2><br>
-    <span>Amount: ${{funds}}</span>
-</div>
-<br>
-<input type="button" value="Add Funds to My Account" (click)=addUserFunds() class="btn btn-primary"><hr>
-<div *ngIf="flag" class="container">
-    <form  [formGroup]="addFundsRef" (ngSubmit)="editUserFunds()" class="form-group">
-        <label>Account Number: </label>
-        <input type="text" formControlName="acctNum" name="acctNum" class="form-control"><br>
-        <label>Amount to add: </label>
-        <input type="number" formControlName="amount" name="amount" class="form-control"><br>
-        <input type="submit" value="Add Funds" class="btn btn-outline-primary">
-        <input type="reset" value="Reset" class="btn btn-outline-success">
-    </form>
-    <span style="color: royalblue;">{{updateMsg}}</span>
-    <span style="color: red;">{{errorMsg}}</span>
+
+<div class="container">
+    <div>
+        <h2>{{user}}'s Funds</h2><br>
+        <span>Amount: ${{funds}}</span>
+    </div>
+    <br>
+    <input type="button" value="Add Funds to My Account" (click)=addUserFunds() class="btn btn-primary"><hr>
+    <div *ngIf="flag" class="container">
+        <form  [formGroup]="addFundsRef" (ngSubmit)="editUserFunds()" class="form-group">
+            <label>Account Number: </label>
+            <input type="text" formControlName="acctNum" name="acctNum" class="form-control"><br>
+            <label>Amount to add: </label>
+            <input type="number" formControlName="amount" name="amount" class="form-control"><br>
+            <input type="submit" value="Add Funds" class="btn btn-outline-primary">
+            <input type="reset" value="Reset" class="btn btn-outline-success">
+        </form>
+        <span style="color: royalblue;">{{updateMsg}}</span>
+        <span style="color: red;">{{errorMsg}}</span>
+    </div>
 </div>
