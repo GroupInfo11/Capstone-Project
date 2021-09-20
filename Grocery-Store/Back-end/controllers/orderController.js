@@ -66,7 +66,7 @@ let addCartOrder = (req, res) => {
             console.log(order.totalPrice);
             if(result.funds >= order.totalPrice){
             
-                let email = user.email;
+                let email = result.email;
                 orderModel.insertMany({orderID:1001, email: email, Order: order.cart, totalPrice: order.totalPrice, orderStatus: "Shipped", user: order.user}, (err, result) => {
                     if (!err) {
                         userModel.findOneAndUpdate({username:order.user}, {$inc:{funds:-order.totalPrice}}, (err, result)=>{
