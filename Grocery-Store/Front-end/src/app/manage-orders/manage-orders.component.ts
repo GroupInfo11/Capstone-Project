@@ -30,7 +30,7 @@ export class ManageOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this._httpClient
-      .get<Order[]>('http://localhost:5000/orders', {
+      .get<Order[]>('http://localhost:5000/order/getAllOrderDeatils', {
         headers: this.headers,
       })
       .subscribe((result) => {
@@ -43,11 +43,12 @@ export class ManageOrdersComponent implements OnInit {
   deleteOrder(orderId) {
     console.log(orderId);
     this._httpClient
-      .delete('http://localhost:5000/orders/' + orderId.toString(), {
+      .delete('http://localhost:5000/order/deleteOrderById/' + orderId, {
         headers: this.headers,
       })
       .subscribe(
         (result) => {
+          console.log(result);
           alert(' Order Declined ');
           location.reload();
           this._router.navigate(['/manage-orders']);

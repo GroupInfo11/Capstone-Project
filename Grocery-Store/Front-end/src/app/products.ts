@@ -5,5 +5,5 @@ export class Products {
     Description: String="";
     product_image: String;
     Quantity:Number;
-    created_at: { type: Date; default: String; }
+    created_at: { type: Date; default: Date; }
 }

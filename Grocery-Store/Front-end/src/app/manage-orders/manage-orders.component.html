@@ -4,13 +4,13 @@
     <tbody *ngFor="let order of orders">
       <tr>
         <td><b>Order Id</b></td>
-        <td><b>User Id</b></td>
+        <td><b>Username</b></td>
         <td><b>Email</b></td>
         <td><b>Actions</b></td>
       </tr>
       <tr>
         <td>{{ order._id }}</td>
-        <td>{{ order.id }}</td>
+        <td>{{ order.user }}</td>
         <td>{{ order.email }}</td>
         <td>
           <button
@@ -18,14 +18,18 @@
             class="btn btn-sm btn-danger"
             (click)="deleteOrder(order._id)"
           >
-            Decline
+            Delete/Deny Order
           </button>
         </td>
       </tr>
-      <label><b>Orders:</b></label>
-      <tr *ngFor="let item of order.orders">
-        <td>{{ item.name }}</td>
-        <td>{{ item.qty }}</td>
+      <label><b>Order:</b></label>
+      <tr>
+        <td>Item Name</td>
+        <td>Quantity</td>
+      </tr>
+      <tr *ngFor="let item of order.Order">
+        <td>{{ item.productName }}</td>
+        <td>{{ item.Quantity }}</td>
       </tr>
     </tbody>
   </table>

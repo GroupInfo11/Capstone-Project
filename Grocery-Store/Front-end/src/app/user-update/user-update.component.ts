@@ -28,11 +28,12 @@ export class UserUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.id = this._route.snapshot.paramMap.get('id');
     this._httpClient
-      .get<User>('http://localhost:5000/users/admin/' + this.id, {
+      .get<User>('http://localhost:5000/user/adminGetCustomerDetails/' + this.id, {
         headers: this.headers,
       })
       .subscribe(
         (result) => {
+          console.log(result);
           this.user = result;
         },
         (error) => {
@@ -49,7 +50,7 @@ export class UserUpdateComponent implements OnInit {
       this.user.password != ''
     ) {
       this._httpClient
-        .put('http://localhost:5000/users/admin/' + this.id, this.user, {
+        .put('http://localhost:5000/user/adminUpdateCustomerDetails/' + this.id, this.user, {
           headers: this.headers,
         })
         .subscribe(

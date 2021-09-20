@@ -24,7 +24,7 @@ module.exports.getProductByNameAdmin = (req, res, next) => {
 	let name = req.params.name;
 	Product.find(
 		{
-			name: { $regex: '.*' + name + '.*', $options: 'i' },
+			productName: { $regex: '.*' + name + '.*', $options: 'i' },
 		},
 		(err, products) => {
 			if (err) throw err;
@@ -35,18 +35,34 @@ module.exports.getProductByNameAdmin = (req, res, next) => {
 };
 
 module.exports.getProductById = function (req, res, next) {
+	console.log(req.params.id);
 	Product.findById(req.params.id, (err, product) => {
 		if (err) throw err;
+		console.log(product);
 		res.send(product);
 	});
 };
 
 module.exports.saveProduct = (req, res) => {
 	let product = new Product(req.body);
-	Product.create(product, (err) => {
-		if (err) throw err;
-		res.send(product);
+	
+	Product.findOne({ProductId: product.ProductId}, (err,result)=>{
+		console.log(result);
+		if(result == null){
+			Product.create(product, (err) => {
+				if (err) throw err;
+				console.log(product);
+				res.send(product);
+			});
+		}else{
+			res.send("Failure");
+		}
 	});
+	// console.log(isProductId);
+	// if(isProductId.length == 0){
+
+	// }
+	
 };
 
 module.exports.deleteProduct = (req, res) => {
@@ -67,14 +83,23 @@ module.exports.editProduct = (req, res) => {
 		if (!product)
 			return res.status(404).send('Product doesnt exist with this Id.');
 		var updatedProduct = {
-			name: req.body.name,
-			price: req.body.price,
-			description: req.body.description,
-			image: req.body.image,
+			productName: req.body.productName,
+			ProductId: req.body.ProductId,
+			ProductPrice: req.body.ProductPrice,
+			Description: req.body.Description,
+			Quantity: req.body.Quantity,
+			product_image: req.body.product_image,
 		};
-		Product.findByIdAndUpdate(req.params.id, updatedProduct, (err) => {
-			if (err) throw err;
-			res.send(updatedProduct);
-		});
+		Product.findOne({ProductId:req.body.ProductId}, (err,result)=>{
+			if(result == null){
+				Product.findByIdAndUpdate(req.params.id, updatedProduct, (err) => {
+					if (err) throw err;
+					res.send(updatedProduct);
+				});
+			}else{
+				res.send("Failure");
+			}
+		})
+		
 	});
 };

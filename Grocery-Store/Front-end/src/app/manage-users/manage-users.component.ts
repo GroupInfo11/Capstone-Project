@@ -30,7 +30,7 @@ export class ManageUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this._httpClient
-      .get<User[]>('http://localhost:5000/users', {
+      .post<User[]>('http://localhost:5000/user/getAllUsers', {
         headers: this.headers,
       })
       .subscribe((result) => {

@@ -60,14 +60,38 @@ let addOrder = (req, res) => {
 
 let addCartOrder = (req, res) => {
 	let order = req.body;
-
-	cartAddModel.insertMany(order, (err, result) => {
-		if (!err) {
-			res.send('Send a order request successfully');
-		} else {
-			res.send(err);
-		}
-	});
+    let user = userModel.findOne({username:order.user}, (err,result)=>{
+        if(!err){
+            console.log("Found user: " + result);
+            console.log(order.totalPrice);
+            if(result.funds >= order.totalPrice){
+            
+                let email = user.email;
+                orderModel.insertMany({orderID:1001, email: email, Order: order.cart, totalPrice: order.totalPrice, orderStatus: "Shipped", user: order.user}, (err, result) => {
+                    if (!err) {
+                        userModel.findOneAndUpdate({username:order.user}, {$inc:{funds:-order.totalPrice}}, (err, result)=>{
+                            if(!err){
+                                console.log("Success");
+                            }else{
+                                console.log(err);
+                            }
+                        })
+                        res.send('Success');
+                    } else {
+                        res.send(err);
+                    }
+                });
+                
+            }else{
+                res.send('Not enough funds.')
+            }
+        }else{
+            console.log(err);
+        }
+    });
+    console.log("User Funds: "+ user.funds + " | Order total price: "+order.totalPrice);
+    
+    
 };
 
 let getOrder = (req,res)=>{
@@ -117,4 +141,13 @@ let getAllOrderDeatils = (req, res) => {
 	});
 }
 
-module.exports={addOrder, addCartOrder, getOrder, updateOrder, getAllOrderDeatils};
+let deleteOrderById = (req, res) => {
+    let id = req.params.id;
+    orderModel.findByIdAndDelete(id, (err, result) => {
+		if (err) throw err;
+        console.log(result);
+		res.send(result);
+	});
+}
+
+module.exports={addOrder, addCartOrder, getOrder, updateOrder, getAllOrderDeatils, deleteOrderById};

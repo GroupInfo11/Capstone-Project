@@ -13,4 +13,6 @@ router.post("/getAllUsers", userController.getAllUsers);
 router.post("/delete", userController.deleteUser);
 router.put("/editCustomerFunds", userController.editCustomerFunds);
 router.put("/getCustomerDetails", userController.getCustomerDetails);
+router.put("/adminUpdateCustomerDetails/:id", userController.adminUpdateCustomerDetails);
+router.get("/adminGetCustomerDetails/:id", userController.adminGetCustomerDetails);
 module.exports = router;

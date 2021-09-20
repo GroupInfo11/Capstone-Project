@@ -6,11 +6,13 @@
                 <table class="table-plain">
                     <tr>
                         <td>Product Name:</td>
+                        <td>Quantity:</td>
                         <td>Product Price:</td>
                         <td>Product ID:</td>
                     </tr>
                     <tr *ngFor = "let product of order.Order">
                         <td>{{product.productName}}</td>
+                        <td>{{product.Quantity}}</td>
                         <td>{{product.ProductPrice}}</td>
                         <td>{{product.ProductId}}</td>
                     </tr>

@@ -14,9 +14,9 @@ export class CartComponent implements OnInit {
   cartItems:Array<Products>=[];
 
   cartTotal = 0;
-  order:Order;
+  order?:Order;
   username?:string;
-
+  message?:string;
   constructor(private msg: MessengerService,private cartUpdateToDatabase:CartUpdateToDatabaseService,public activatedRoute:ActivatedRoute, public router:Router) { }
 
   valueEmittedFromChildComponent: string = '';
@@ -49,16 +49,20 @@ sendToCheckOut(){
 
 
 
-  console.log(this.order);
-  this.order.Order=this.cartItems;
-  this.order.totalPrice=this.cartTotal;
-  this.order.user=this.username;
-  console.log(this.order);
-  this.cartUpdateToDatabase.checkCart(this.order).subscribe(result=>{
+  console.log(this.cartItems);
+  // this.cartItems.forEach(c=>this.order.Order.push(c));
+  // this.order.totalPrice=this.cartTotal;
+  // this.order.user=this.username;
+  // console.log(this.order);
+  this.cartUpdateToDatabase.checkCart(this.cartItems, this.cartTotal, this.username).subscribe(result=>{
     if(result=="Success"){
       console.log("Success");
       this.router.navigate(["UserOrderStatus", this.username]);
-    }else{
+    }else if(result == 'Not enough funds.'){
+      this.message = result;
+      console.log("failed");
+    }
+    else{
       console.log("failed");
     }
   },
@@ -84,8 +88,9 @@ sendToCheckOut(){
 
     let productExists = false;
     for(let i in this.cartItems){
-      console.log(product);
-      if(this.cartItems[i].ProductId === product.ProductId){
+      console.log(product.productName);
+      if(this.cartItems[i].productName == product.productName){
+        console.log(this.cartItems[i]);
         this.cartItems[i].Quantity=Number(this.cartItems[i].Quantity)+1;
         productExists=true
         break;

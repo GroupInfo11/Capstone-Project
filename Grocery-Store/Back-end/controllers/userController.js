@@ -35,11 +35,42 @@ let signUp = async(req,res)=>{
     let user = req.body;
     userModel.insertMany(user, (err,result)=> {
     if(!err){
+        res.send(result);
         console.log(result)
     } else {
         console.log(err);
     }
     })
+}
+
+let adminUpdateCustomerDetails = (req,res)=>{
+    userModel.findById(req.params.id, (err, user)=>{
+        if(err) throw err;
+        if(!user){
+            return res.status(404).send("Can't Perform Operation on User");
+        }
+        let updatedUser = {
+			fName: req.body.fName,
+			lName: req.body.lName,
+			email: req.body.email,
+            username: req.body.username,
+			address: req.body.address,
+			accountNum: req.body.accountNum,
+		};
+        userModel.findByIdAndUpdate(req.params.id, updatedUser, (err)=>{
+            if(err) throw err;
+            res.send(updatedUser);
+        })
+    })
+}
+
+let adminGetCustomerDetails = (req,res)=>{
+    console.log(req.params.id);
+    userModel.findById(req.params.id, (err, product) => {
+		if (err) throw err;
+        console.log(product);
+		res.send(product);
+	});
 }
 
 let updateCustomerDetails = (req,res)=>{
@@ -123,4 +154,4 @@ let getCustomerDetails = (req,res)=>{
     });
 }
 
-module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds, editCustomerFunds, getAllUsers, getCustomerDetails, getAllUsersDetails};
+module.exports = {signIn, signUp, deleteUser, updateCustomerDetails, getCustomerFunds, editCustomerFunds, getAllUsers, getCustomerDetails, getAllUsersDetails, adminUpdateCustomerDetails, adminGetCustomerDetails};

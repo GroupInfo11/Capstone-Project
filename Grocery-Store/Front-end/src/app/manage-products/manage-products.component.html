@@ -40,20 +40,20 @@
         <div *ngFor="let product of products">
           <div class="col">
             <div class="card shadow-sm" style="width: 15rem">
-              <img src="{{ product.image }}" width="35%" height="35%" />
+              <img src="{{ product.product_image }}" width="35%" height="35%" />
 
               <div class="card-body">
                 <table class="table">
                   <tbody>
                     <tr>
                       {{
-                        product.name
+                        product.productName
                       }}
                     </tr>
 
                     <tr>
                       <th>Price</th>
-                      <td>{{ product.price | currency }}</td>
+                      <td>{{ product.ProductPrice | currency }}</td>
                     </tr>
                   </tbody>
                 </table>

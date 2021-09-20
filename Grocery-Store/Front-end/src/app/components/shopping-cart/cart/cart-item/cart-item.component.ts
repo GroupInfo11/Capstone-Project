@@ -11,7 +11,6 @@ export class CartItemComponent implements OnInit {
 
   quant=0;
   price=0;
-
   @Output() delete_id = new EventEmitter<String>();
 
   @Output() minus_id = new EventEmitter<String>();

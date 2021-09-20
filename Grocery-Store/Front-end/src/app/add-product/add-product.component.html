@@ -6,78 +6,120 @@
         <div class="mb-3">
           <input
             type="text"
-            name="name"
-            formControlName="name"
+            name="productName"
+            formControlName="productName"
             [ngClass]="{
-              'is-invalid': f.name.touched && f.name.invalid
+              'is-invalid': f.productName.touched && f.productName.invalid
             }"
-            [(ngModel)]="product.name"
-            placeholder="Name"
+            [(ngModel)]="product.productName"
+            placeholder="Product Name"
           />
           <div
-            *ngIf="f.name.touched && f.name.invalid"
+            *ngIf="f.productName.touched && f.productName.invalid"
             class="invalid-feedback"
           >
-            <div *ngIf="f.name.errors.required">
+            <div *ngIf="f.productName.errors.required">
               Name is required and must be a valid name
             </div>
           </div>
         </div>
         <div class="mb-3">
           <input
-            type="text"
-            name="price"
-            formControlName="price"
+            type="number"
+            name="ProductId"
+            formControlName="ProductId"
             [ngClass]="{
-              'is-invalid': f.price.touched && f.price.invalid
+              'is-invalid': f.ProductId.touched && f.ProductId.invalid
             }"
-            [(ngModel)]="product.price"
-            placeholder="Price"
+            [(ngModel)]="product.ProductId"
+            placeholder="Product ID"
           />
           <div
-            *ngIf="f.price.touched && f.price.invalid"
+            *ngIf="f.ProductId.touched && f.ProductId.invalid"
             class="invalid-feedback"
           >
-            <div *ngIf="f.price.errors.required">Price is required</div>
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <input
-            type="text"
-            name="description"
-            formControlName="description"
-            [ngClass]="{
-              'is-invalid': f.description.touched && f.description.invalid
-            }"
-            [(ngModel)]="product.description"
-            placeholder="Description"
-          />
-          <div
-            *ngIf="f.description.touched && f.description.invalid"
-            class="invalid-feedback"
-          >
-            <div *ngIf="f.description.errors.required">
-              Description is required
+            <div *ngIf="f.ProductId.errors.required">
+              Product ID is required and must be a valid ID
             </div>
           </div>
         </div>
         <div class="mb-3">
           <input
             type="text"
-            name="image"
-            formControlName="image"
+            name="ProductPrice"
+            formControlName="ProductPrice"
             [ngClass]="{
-              'is-invalid': f.image.touched && f.image.invalid
+              'is-invalid': f.ProductPrice.touched && f.ProductPrice.invalid
             }"
-            [(ngModel)]="product.image"
+            [(ngModel)]="product.ProductPrice"
+            placeholder="Price"
+          />
+          <div
+            *ngIf="f.ProductPrice.touched && f.ProductPrice.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.ProductPrice.errors.required">Price is required</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <input
+            type="text"
+            name="Description"
+            formControlName="Description"
+            [ngClass]="{
+              'is-invalid': f.Description.touched && f.Description.invalid
+            }"
+            [(ngModel)]="product.Description"
+            placeholder="Description"
+          />
+          <div
+            *ngIf="f.Description.touched && f.Description.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.Description.errors.required">
+              Description is required
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <input
+            type="text"
+            name="Quantity"
+            formControlName="Quantity"
+            [ngClass]="{
+              'is-invalid': f.Quantity.touched && f.Quantity.invalid
+            }"
+            [(ngModel)]="product.Quantity"
+            placeholder="Quantity"
+          />
+          <div
+            *ngIf="f.Quantity.touched && f.Quantity.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.Quantity.errors.required">
+              Description is required
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <input
+            type="text"
+            name="product_image"
+            formControlName="product_image"
+            [ngClass]="{
+              'is-invalid': f.product_image.touched && f.product_image.invalid
+            }"
+            [(ngModel)]="product.product_image"
             placeholder="Image"
           />
           <div
-            *ngIf="f.image.touched && f.image.invalid"
+            *ngIf="f.product_image.touched && f.product_image.invalid"
             class="invalid-feedback"
           >
-            <div *ngIf="f.image.errors.required">Image Link is required</div>
+            <div *ngIf="f.product_image.errors.required">Image Link is required</div>
           </div>
         </div>
 

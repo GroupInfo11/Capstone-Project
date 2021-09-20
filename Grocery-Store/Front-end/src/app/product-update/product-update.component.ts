@@ -1,4 +1,4 @@
-import { Product } from './../models/product';
+import { Products } from './../products';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +11,7 @@ import { AdminAuthGuard } from '../services/admin-auth-guard.service';
 })
 export class ProductUpdateComponent implements OnInit {
   id: any;
-  product: Product = new Product();
+  product: Products = new Products();
   adminLoginStatus: boolean = false;
   
   headers = new HttpHeaders().set(
@@ -29,7 +29,7 @@ export class ProductUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.id = this._route.snapshot.paramMap.get('id');
     this._httpClient
-      .get<Product>('http://localhost:5000/products/' + this.id, {
+      .get<Products>('http://localhost:5000/products/' + this.id, {
         headers: this.headers,
       })
       .subscribe(
@@ -45,10 +45,12 @@ export class ProductUpdateComponent implements OnInit {
 
   updateProduct() {
     if (
-      this.product.name != '' &&
-      this.product.price != null &&
-      this.product.description != '' &&
-      this.product.image != ''
+      this.product.productName != '' &&
+      this.product.ProductId != null &&
+      this.product.ProductPrice != null &&
+      this.product.Description != '' &&
+      this.product.Quantity != null &&
+      this.product.product_image != ''
     )
       this._httpClient
         .put('http://localhost:5000/products/update/' + this.id, this.product, {
@@ -56,10 +58,16 @@ export class ProductUpdateComponent implements OnInit {
         })
         .subscribe(
           (result) => {
-            alert('Product Updated Successfully.');
-            this._router.navigate(['/manage-products']);
+            if(result == "Failure"){
+              alert('Enter Valid Details');
+            }else{
+              alert('Product Updated Successfully.');
+              this._router.navigate(['/manage-products']);
+            }
+            
           },
           (error) => {
+            alert('Enter Valid Details');
             console.log(error);
           }
         );

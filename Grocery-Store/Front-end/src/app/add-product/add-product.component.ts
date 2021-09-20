@@ -32,10 +32,12 @@ export class AddProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this._formBuilder.group({
-      name: ['', [Validators.required]],
-      price: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      image: ['', [Validators.required]],
+      productName: ['', [Validators.required]],
+      ProductId: ['', [Validators.required]],
+      ProductPrice: ['', [Validators.required]],
+      Description: ['', [Validators.required]],
+      Quantity:['',[Validators.required]],
+      product_image: ['', [Validators.required]],
     });
     this.adminLoginStatus = this._admin.isAdminLoggedIn();
   }
@@ -51,11 +53,18 @@ export class AddProductComponent implements OnInit {
       })
       .subscribe(
         (result) => {
-          alert('Product Added Successfully.');
-          this._router.navigate(['/manage-products']);
+          console.log(result);
+          if(result == "Failure"){
+            alert('Cant add product, Product ID already in use.');
+          }else{
+            alert('Product Added Successfully.');
+            this._router.navigate(['/manage-products']);
+          }
+          
         },
         (error) => {
           console.log(error);
+          alert('Cant add product, Product ID already in use.')
         }
       );
   }

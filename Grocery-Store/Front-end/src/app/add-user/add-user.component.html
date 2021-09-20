@@ -8,21 +8,75 @@
         <div class="mb-3">
           <input
             type="text"
-            name="fullName"
-            formControlName="fullName"
+            name="fName"
+            formControlName="fName"
             [ngClass]="{
-              'is-invalid': f.fullName.touched && f.fullName.invalid
+              'is-invalid': f.fName.touched && f.fName.invalid
             }"
-            [(ngModel)]="user.fullName"
-            placeholder="Full Name"
+            placeholder="First Name"
           />
           <div
-            *ngIf="f.fullName.touched && f.fullName.invalid"
+            *ngIf="f.fName.touched && f.fName.invalid"
             class="invalid-feedback"
           >
-            <div *ngIf="f.fullName.errors.required">
-              Full Name is required and must be a valid name
+            <div *ngIf="f.fName.errors.required">
+              First Name is required and must be a valid name
             </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <input
+            type="text"
+            name="lName"
+            formControlName="lName"
+            [ngClass]="{
+              'is-invalid': f.lName.touched && f.lName.invalid
+            }"
+            placeholder="Last Name"
+          />
+          <div
+            *ngIf="f.lName.touched && f.lName.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.lName.errors.required">
+              Last Name is required and must be a valid name
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <input
+            type="text"
+            name="username"
+            formControlName="username"
+            [ngClass]="{
+              'is-invalid': f.username.touched && f.username.invalid
+            }"
+            placeholder="username"
+          />
+          <div
+            *ngIf="f.username.touched && f.username.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.username.errors.required">
+              Username is required and must be a valid username
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <input
+            type="tel"
+            name="phone"
+            formControlName="phone"
+            [ngClass]="{
+              'is-invalid': f.phone.touched && f.phone.invalid
+            }"
+            placeholder="phone"
+          />
+          <div
+            *ngIf="f.phone.touched && f.phone.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.phone.errors.required">Phone is required</div>
           </div>
         </div>
         <div class="mb-3">
@@ -33,7 +87,6 @@
             [ngClass]="{
               'is-invalid': f.email.touched && f.email.invalid
             }"
-            [(ngModel)]="user.email"
             placeholder="Email"
           />
           <div
@@ -46,7 +99,23 @@
             </div>
           </div>
         </div>
-
+        <div class="mb-3">
+          <input
+            type="address"
+            name="address"
+            formControlName="address"
+            [ngClass]="{
+              'is-invalid': f.address.touched && f.address.invalid
+            }"
+            placeholder="Address"
+          />
+          <div
+            *ngIf="f.address.touched && f.address.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.address.errors.required">Address is required</div>
+          </div>
+        </div>
         <div class="mb-3">
           <input
             type="password"
@@ -55,7 +124,6 @@
             [ngClass]="{
               'is-invalid': f.password.touched && f.password.invalid
             }"
-            [(ngModel)]="user.password"
             placeholder="Password"
           />
           <div
@@ -77,7 +145,6 @@
               'is-invalid':
                 f.confirmPassword.touched && f.confirmPassword.invalid
             }"
-            [(ngModel)]="user.confirmPassword"
             placeholder="Confirm Password"
           />
           <div
@@ -92,11 +159,53 @@
             </div>
           </div>
         </div>
-
+        <div class="mb-3">
+          <label>Lock Status:</label><br>
+          <input
+            type="number"
+            name="lockStatus"
+            formControlName="lockStatus"
+            [(ngModel)]="lockStatus"
+            value=0
+            readonly
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="number"
+            name="accountNum"
+            formControlName="accountNum"
+            [ngClass]="{
+              'is-invalid': f.accountNum.touched && f.accountNum.invalid
+            }"
+            placeholder="Account Number"
+          />
+          <div
+            *ngIf="f.accountNum.touched && f.accountNum.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.accountNum.errors.required">
+              Account Number is required.
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label>Funds:</label><br>
+          <input
+            type="number"
+            name="funds"
+            formControlName="funds"
+            [(ngModel)]="funds"
+            value=500
+            placeholder=500
+            readonly
+          />
+        </div>
         <input
           type="submit"
           value="Add User"
           (click)="onsubmit()"
+          
           [disabled]="!userForm.valid"
           class="btn btn-primary"
         />
